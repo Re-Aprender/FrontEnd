@@ -10,7 +10,9 @@ function App() {
   return (
   <BrowserRouter>
   <Header/>
-  <div className="flex-grow flex flex-col flex-wrap">
+
+      <div className="flex-grow flex flex-col flex-wrap">
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
