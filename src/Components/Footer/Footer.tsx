@@ -8,13 +8,9 @@ function Footer() {
 
             <div className='container p-4 gap-4 flex flex-wrap items-center justify-between'>
 
-
-
-
                 <div className="max-w-48">
                     <img src={logobranca} alt="Logo do projeto Reaprender" />
                 </div>
-
 
                 <div className='flex gap-2'>
                     <a href="https://instagram.com"  target="_blank">
