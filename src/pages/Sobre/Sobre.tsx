@@ -9,11 +9,12 @@ import jailson from '../../assets/jailson.jpeg'
 
 function Sobre() {
   return (
-    <section className="flex flex-col my-8 px-4">
-      <div className="container m-auto flex flex-col items-center my-8 p-8 px-20 bg-stone-50 rounded-2xl shadow">
-        <h1 className="text-3xl font-bold mb-5 text-a">Sobre o Projeto</h1>
+    <section className="flex flex-col  ">
+      <div className="container m-auto flex flex-col items-center  p-8 bg-stone-100 rounded-lg shadow-lg">
         <div className='container flex flex-wrap items-center gap-6 justify-center'>
           <div className='flex-1 min-w-80'>
+            <h1 className="text-4xl mb-6">Sobre o <span className="text-accent-pink font-bold">Projeto;</span></h1>
+
             <p className="leading-7 mb-3 max-w-[100ch]">O projeto Re;Aprender está alinhado com o Objetivo de Desenvolvimento Sustentável (ODS) 4 da ONU, que visa promover educação inclusiva e de qualidade. A iniciativa se dedica à venda de livros novos e usados a preço de custo, com o objetivo de democratizar o acesso à leitura e ao aprendizado para todas as pessoas, independentemente de sua situação socioeconômica.</p>
             <p className="leading-7 max-w-[100ch]">O Re;Aprender utiliza tecnologias avançadas para oferecer uma solução robusta. No backend, são empregados Java, Spring Boot e bancos de dados relacionais para assegurar um sistema sólido e eficiente. No frontend, são utilizadas as tecnologias React, TypeScript e Tailwind para garantir uma interface moderna e responsiva. A combinação dessas tecnologias permite que a plataforma atenda a elevados padrões técnicos e tenha um impacto significativo na facilitação do acesso à educação e à cultura de forma acessível e inclusiva.</p>
           </div>
@@ -23,8 +24,9 @@ function Sobre() {
         </div>
       </div>
 
-      <div className="container m-auto flex flex-col items-center my-8 p-8 px-20 bg-stone-50 rounded-2xl shadow">
-        <h1 className="text-3xl font-bold mb-5 text-a">Sobre Nós</h1>
+      <div className="container m-auto flex flex-col items-center my-8 p-8  bg-stone-100 rounded-lg shadow-lg">
+        <h1 className="text-4xl mb-6">Sobre <span className="text-accent-orange font-bold">Nós;</span></h1>
+
         <p className="leading-7 mb-5 text-center">O Re;Aprender é desenvolvido por uma equipe composta por sete pessoas, todas participantes do bootcamp Java Fullstack da Generation Brasil e residentes no Rio de Janeiro e em São Paulo.</p>
 
         <div className='flex flex-wrap justify-center gap-4'>

@@ -14,23 +14,23 @@ function Footer() {
 
                 <div className='flex gap-2'>
                     <a href="https://instagram.com"  target="_blank">
-                        <InstagramLogo size={32} className='text-stone-50' />
+                        <InstagramLogo size={32} weight="bold" className='text-stone-50' />
                     </a>
 
                     <a href="https://linkedin.com"  target="_blank">
-                        <LinkedinLogo size={32} className='text-stone-50' />
+                        <LinkedinLogo size={32} weight="bold" className='text-stone-50' />
                     </a>
 
                     <a href="tel:+5511967421552"  target="_blank">
-                        <Phone size={32} className='text-stone-50' />
+                        <Phone size={32} weight="bold" className='text-stone-50' />
                     </a>
 
                     <a href="mailto:grupo01generation@gmail.com"  target="_blank">
-                        <EnvelopeSimple size={32} className='text-stone-50' />
+                        <EnvelopeSimple size={32} weight="bold" className='text-stone-50' />
                     </a>
 
                     <a href="https://github.com/Re-Aprender"  target="_blank">
-                        <GithubLogo size={32} className='text-stone-50' />
+                        <GithubLogo size={32} weight="bold" className='text-stone-50' />
                     </a>
                 </div>
 

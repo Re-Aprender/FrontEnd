@@ -10,7 +10,7 @@ const elements = [];
   }
   return (
     <div
-    className="max-w-full overflow-x-auto gap-4 p-4 pb-8 flex flex-nowrap"
+    className="pl-4 bg-stone-100 rounded-lg shadow-lg container overflow-x-scroll gap-4 py-4 pb-8 flex flex-nowrap"
     >{elements}</div>
   )
 }
