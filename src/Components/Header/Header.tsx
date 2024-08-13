@@ -29,6 +29,8 @@ function Header() {
             <Link to="/home"><li className="hover:underline">Home</li></Link>
             <Link to="/sobre"><li className="hover:underline">Sobre</li></Link>
             <Link to="/login"><li className="hover:underline">Login</li></Link>
+            <Link to="/cadastro"><li className="hover:underline">Cadastro</li></Link>
+
             <Link to="/perfil"><li>
               <span className="material-symbols-outlined text-4xl bg-gradient-to-t from-accent-pink to-accent-orange  text-transparent bg-clip-text">
               person

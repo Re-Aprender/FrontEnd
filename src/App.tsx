@@ -7,6 +7,7 @@ import Header from "./Components/Header/Header"
 import Footer from "./Components/Footer/Footer"
 
 import banner from "./assets/banner.png"
+import Cadastro from "./pages/Cadastro/Cadastro"
 
 function Banner() {
   const location = useLocation();
@@ -30,6 +31,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+
           <Route path="/home" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="*" element={<NotFound />} />
