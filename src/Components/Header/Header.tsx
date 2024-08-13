@@ -8,10 +8,14 @@ function Header() {
       <div className=" bg-gradient-to-r from-accent-pink to-accent-orange w-full text-center text-stone-50 p-1">
         <p>Adicione o cupom <span className="font-bold">LIVRAMENTO</span> para ganhar <span className="font-bold">10% de DESCONTO</span>! </p>
       </div>
-      <div className="container p-4 flex flex-wrap gap-2 justify-between items-center">
-        <div className="max-w-72">
-          <img  src={logo} alt="Logo do projeto Reaprender" />
-        </div>
+      <div className="container p-4 flex flex-wrap gap-2 sm:align-middle md:justify-between items-center  ">
+       
+       <Link to="/">
+          <div className="max-w-72">
+            <img src={logo} alt="Logo do projeto Reaprender" />
+          </div>
+       </Link>
+       
 
         <div className="flex bg-stone-100 flex-grow max-w-[30rem] items-center rounded-lg">
           <input className="outline-none flex-grow bg-transparent p-3" type="search" placeholder="Pesquisar livro..." />
@@ -21,7 +25,7 @@ function Header() {
         </div>
 
         <nav>
-          <ul className="flex gap-4 items-center ">
+          <ul className="flex gap-4 items-center  ">
             <Link to="/home"><li className="hover:underline">Home</li></Link>
             <Link to="/sobre"><li className="hover:underline">Sobre</li></Link>
             <Link to="/login"><li className="hover:underline">Login</li></Link>
