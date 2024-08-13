@@ -1,7 +1,9 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Usuario from '../../models/Usuario'
 import { cadastrarUsuario } from '../../services/Service'
+import { AuthContext } from '../../Contexts/AuthContext'
+import { Bars, Grid } from 'react-loader-spinner'
 
 function Cadastro() {
     let navigate = useNavigate()
@@ -14,6 +16,9 @@ function Cadastro() {
         email: '',
         senha: '',
     })
+
+    const { isLoading, setIsLoading } = useContext(AuthContext)
+
 
     const [usuarioResposta, setUsuarioResposta] = useState<Usuario>({
         id: 0,
@@ -49,10 +54,16 @@ function Cadastro() {
         if (confirmaSenha === usuario.senha && usuario.senha.length >= 8) {
 
             try {
+                setIsLoading(true)
+
                 await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuarioResposta)
+                setIsLoading(false)
+
                 alert('Usuário cadastrado com sucesso')
 
             } catch (error) {
+                setIsLoading(false)
+
                 alert('Erro ao cadastrar o Usuário')
             }
 
@@ -70,21 +81,27 @@ function Cadastro() {
                 <h2 className='text-2xl'>Se cadastrar com <span className='font-bold text-accent-pink'>Email e Senha;</span></h2>
 
                 <label htmlFor="nome">Nome:</label>
-                <input onChange={(e:ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.nome} name="nome" id="nome" placeholder="Exemplo: Rhaíssa lima diva" className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
+                <input onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.nome} name="nome" id="nome" placeholder="Exemplo: Rhaíssa lima diva" className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
 
                 <label htmlFor="email">Email</label>
-                <input onChange={(e:ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.email} name="email" id="email" placeholder='Exemplo: flavio@hotmail.com' className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
+                <input onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.email} name="email" id="email" placeholder='Exemplo: flavio@hotmail.com' className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
 
                 <label htmlFor="senha">Senha:</label>
-                <input onChange={(e:ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.senha} name="senha" id="senha" type="password" placeholder='Insira sua senha' className="bg-stone-200 text-stone-600 w-full px-5 py-2 rounded-lg text-lg  border border-gray-400 placeholder-text-stone-600 shadow" />
+                <input onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.senha} name="senha" id="senha" type="password" placeholder='Insira sua senha' className="bg-stone-200 text-stone-600 w-full px-5 py-2 rounded-lg text-lg  border border-gray-400 placeholder-text-stone-600 shadow" />
 
                 <label htmlFor="confirmarSenha">Confirmar Senha:</label>
-                <input onChange={(e:ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)} value={confirmaSenha} name="confirmarSenha" id="confirmarSenha" type="password" placeholder='Confirme sua senha' className="bg-stone-200 text-stone-600 w-full px-5 py-2 rounded-lg text-lg  border border-gray-400 placeholder-text-stone-600 shadow" />
+                <input onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)} value={confirmaSenha} name="confirmarSenha" id="confirmarSenha" type="password" placeholder='Confirme sua senha' className="bg-stone-200 text-stone-600 w-full px-5 py-2 rounded-lg text-lg  border border-gray-400 placeholder-text-stone-600 shadow" />
 
                 <label htmlFor="foto">Foto:</label>
-                <input onChange={(e:ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.foto} name="foto" id="foto" placeholder="Exemplo: https://imgur.com/iddaimagem" className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
+                <input onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.foto} name="foto" id="foto" placeholder="Exemplo: https://imgur.com/iddaimagem" className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
 
-                <button className='bg-accent-pink shadow-md text-stone-50 p-2 px-8 text-lg rounded-lg hover:bg-accent-orange_dark transition-colors duration-100'>Cadastrar</button>
+                <button
+                    disabled={isLoading}
+                    className={`bg-accent-pink shadow-md text-stone-50 p-2 px-8 text-lg rounded-lg transition-colors duration-100 flex justify-center ${isLoading ? "hover:bg-accent-pink" : "hover:bg-accent-pink_dark"
+                        }`}
+                >
+                    {!isLoading ? "Cadastrar" : <Bars color='#ffffff' width={24} height={24} />}
+                </button>
                 <p className='self-center'>Já tem um conta?{` `}<Link to="/login" className='text-cyan-600 hover:text-cyan-700'>Entre</Link>.</p>
             </form>
         </div>

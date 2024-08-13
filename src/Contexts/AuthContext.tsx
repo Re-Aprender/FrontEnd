@@ -9,6 +9,7 @@ interface AuthContextProps {
     handleLogout(): void
     handleLogin(usuario: UsuarioLogin): Promise<void>
     isLoading: boolean
+    setIsLoading(carregando: boolean): void
 }
 
 interface AuthProviderProps {
@@ -56,7 +57,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
 
     return (
-        <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading }}>
+        <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading, setIsLoading }}>
             {children}
         </AuthContext.Provider>
     )
