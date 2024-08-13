@@ -8,6 +8,7 @@ import Footer from "./Components/Footer/Footer"
 
 import banner from "./assets/banner.png"
 import Cadastro from "./pages/Cadastro/Cadastro"
+import { AuthProvider } from "./Contexts/AuthContext"
 
 function Banner() {
   const location = useLocation();
@@ -22,25 +23,27 @@ function Banner() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
+    <AuthProvider>
+      <BrowserRouter>
+        <Header />
 
-        <Banner/>
-    
-      <div className="flex-grow flex flex-col flex-wrap items-center px-4 py-8">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<Cadastro />} />
+        <Banner />
 
-          <Route path="/home" element={<Home />} />
-          <Route path="/sobre" element={<Sobre />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
+        <div className="flex-grow flex flex-col flex-wrap items-center px-4 py-8">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cadastro" element={<Cadastro />} />
 
-      <Footer />
-    </BrowserRouter>
+            <Route path="/home" element={<Home />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+
+        <Footer />
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 
