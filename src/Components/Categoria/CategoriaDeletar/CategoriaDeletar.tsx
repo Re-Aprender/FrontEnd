@@ -64,14 +64,16 @@ function CategoriaDeletar() {
         retornar()
     }
     return (
-        <div className='container w-1/3 mx-auto'>
+        <div className='container mx-auto'>
             <h1 className='text-4xl text-center my-4'>Deletar categoria</h1>
 
             <p className='text-center font-semibold mb-4'>Você tem certeza de que deseja apagar a categoria a seguir?</p>
 
-            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
+            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between max-w-[30rem] mx-auto'>
                 <header className='py-2 px-6 bg-gradient-to-r from-accent-pink to-accent-orange text-stone-50 font-bold text-2xl text-center'>Categoria</header>
-                <p className='p-8 text-3xl bg-stone-50 h-full text-center'>{categoria.nome}</p>
+                <p className='pt-4 text-3xl bg-stone-50 h-full text-center'>{categoria.nome}</p>
+                <p className='py-4 text-1xl bg-stone-50 h-full text-center'>{categoria.didatico ? "Didático" : "Não Didático"}</p>
+
                 <div className="flex">
                     <button className='w-full text-accent-orange flex items-center justify-center py-2 bg-stone-50 border-r-2 border-t-2 border-stone-150 hover:bg-accent-orange hover:text-stone-50 duration-300' onClick={retornar}>Não</button>
                     <button className='text-accent-orange w-full flex items-center justify-center bg-slate-50 border-t-2 border-stone-150 hover:bg-accent-orange hover:text-stone-50 duration-300' onClick={deletarCategoria}>
