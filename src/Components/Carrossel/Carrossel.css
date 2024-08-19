@@ -1,0 +1,34 @@
+
+.swiper-button-next {
+    color: #ffffff;
+
+}
+
+.swiper-button-prev {
+    color: #ffffff;
+}
+
+
+@media screen and (max-width: 600px){
+    .swiper-button-next {
+    display:none;
+
+}
+
+.swiper-button-prev {
+        display:none;
+
+}
+}
+
+/* Bolinhas de paginação padrão */
+.swiper-pagination-bullet {
+    background: #ffffff; /* Cor padrão das bolinhas */
+    opacity: 0.5; /* Transparência */
+}
+
+/* Bolinha ativa */
+.swiper-pagination-bullet-active {
+    background: #ffffff; 
+    opacity: 1; 
+}
