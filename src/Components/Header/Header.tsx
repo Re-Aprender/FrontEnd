@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import logo from "../../assets/logo.png"
 import { useContext } from "react"
 import { AuthContext } from "../../Contexts/AuthContext"
+import { toastAlerta } from "../../util/toastAlerta"
 
 function Header() {
 
@@ -13,7 +14,7 @@ function Header() {
 
   function logout() {
     handleLogout()
-    alert('Usuário deslogado com sucesso')
+    toastAlerta("Sucesso ao deslogar", "sucesso")
     navigate('/login')
   }
 

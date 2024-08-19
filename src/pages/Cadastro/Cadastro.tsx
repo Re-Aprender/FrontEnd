@@ -4,6 +4,7 @@ import Usuario from '../../models/Usuario'
 import { cadastrarUsuario } from '../../services/Service'
 import { AuthContext } from '../../Contexts/AuthContext'
 import { Bars, Grid } from 'react-loader-spinner'
+import { toastAlerta } from '../../util/toastAlerta'
 
 function Cadastro() {
     let navigate = useNavigate()
@@ -59,16 +60,17 @@ function Cadastro() {
                 await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuarioResposta)
                 setIsLoading(false)
 
-                alert('Usuário cadastrado com sucesso')
+                toastAlerta("Usuário cadastrado com sucesso", "sucesso")
 
             } catch (error) {
                 setIsLoading(false)
 
-                alert('Erro ao cadastrar o Usuário')
+                toastAlerta("Erro ao cadastrar usuário", "erro")
             }
 
         } else {
-            alert('Dados inconsistentes. Verifique as informações de cadastro.')
+            toastAlerta("Dados inconsistentes, veifique os dados do usuário", "erro")
+
             setUsuario({ ...usuario, senha: "" }) // Reinicia o campo de Senha
             setConfirmaSenha("")                  // Reinicia o campo de Confirmar Senha
         }
