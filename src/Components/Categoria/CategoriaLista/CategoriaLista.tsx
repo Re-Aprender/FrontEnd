@@ -5,6 +5,7 @@ import { AuthContext } from "../../../Contexts/AuthContext";
 import { buscar } from "../../../services/Service";
 import { DNA } from "react-loader-spinner";
 import CategoriaCard from "../CategoriaCard/CategoriaCard";
+import { toastAlerta } from "../../../util/toastAlerta";
 
 function CategoriaLista() {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
@@ -21,7 +22,7 @@ function CategoriaLista() {
       });
     } catch (error: unknown) {
       if (error instanceof Error && error.toString().includes('403')) {
-        alert('O token expirou, favor logar novamente')
+        toastAlerta("O token expirou, favor logar novamente", "erro")
         handleLogout()
       }
     }
@@ -29,7 +30,7 @@ function CategoriaLista() {
 
   useEffect(() => {
     if (token === '') {
-      alert('Você precisa estar logado');
+      toastAlerta("Você precisa estar logado", "info")
       navigate('/login');
     }
   }, [token]);
