@@ -6,7 +6,7 @@ import { AuthContext } from "../../Contexts/AuthContext"
 
 function Header() {
 
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
 
   const { usuario, handleLogout } = useContext(AuthContext)
@@ -44,6 +44,8 @@ function Header() {
           <ul className="flex gap-4 items-center  ">
             <Link to="/home"><li className="hover:underline">Home</li></Link>
             <Link to="/sobre"><li className="hover:underline">Sobre</li></Link>
+            <Link to="/admin/categorias"><li className="hover:underline">Categorias</li></Link>
+            <Link to="/admin/categorias/criar"><li className="hover:underline">Criar categoria</li></Link>
 
             {usuario.token !== "" ?
               <button onClick={logout}>Sair</button>

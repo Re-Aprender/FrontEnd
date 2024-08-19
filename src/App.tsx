@@ -9,6 +9,10 @@ import Footer from "./Components/Footer/Footer"
 import banner from "./assets/banner.png"
 import Cadastro from "./pages/Cadastro/Cadastro"
 import { AuthProvider } from "./Contexts/AuthContext"
+import { ToastContainer } from "react-toastify"
+import CategoriaLista from "./Components/Categoria/CategoriaLista/CategoriaLista"
+import CategoriaFormulario from "./Components/Categoria/CategoriaFormulario/CategoriaFormulario"
+import CategoriaDeletar from "./Components/Categoria/CategoriaDeletar/CategoriaDeletar"
 
 function Banner() {
   const location = useLocation();
@@ -24,6 +28,7 @@ function Banner() {
 function App() {
   return (
     <AuthProvider>
+      <ToastContainer/>
       <BrowserRouter>
         <Header />
 
@@ -38,6 +43,13 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="*" element={<NotFound />} />
+
+            {/* Sessão de administrador */}
+            <Route path="/admin/categorias" element={<CategoriaLista />} />
+            <Route path="admin/categorias/criar" element={<CategoriaFormulario />} />
+            <Route path="admin/categorias/editar/:id" element={<CategoriaFormulario />} />
+            <Route path="admin/categorias/deletar/:id" element={<CategoriaDeletar />} />
+
           </Routes>
         </div>
 
