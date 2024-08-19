@@ -3,17 +3,18 @@ import { Link, useNavigate } from "react-router-dom"
 import logo from "../../assets/logo.png"
 import { useContext } from "react"
 import { AuthContext } from "../../Contexts/AuthContext"
+import { toastAlerta } from "../../util/toastAlerta"
 
 function Header() {
 
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
 
   const { usuario, handleLogout } = useContext(AuthContext)
 
   function logout() {
     handleLogout()
-    alert('Usuário deslogado com sucesso')
+    toastAlerta("Sucesso ao deslogar", "sucesso")
     navigate('/login')
   }
 
@@ -44,7 +45,7 @@ function Header() {
           <ul className="flex gap-4 items-center  ">
             <Link to="/home"><li className="hover:underline">Home</li></Link>
             <Link to="/sobre"><li className="hover:underline">Sobre</li></Link>
-
+           
             {usuario.token !== "" ?
               <button onClick={logout}>Sair</button>
               :

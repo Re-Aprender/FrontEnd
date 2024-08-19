@@ -1,8 +1,12 @@
 import logobranca from "../../assets/logobranca.png"
 import { Link } from 'react-router-dom'
 import { EnvelopeSimple, GithubLogo, InstagramLogo, LinkedinLogo, Phone } from '@phosphor-icons/react'
+import { useContext } from "react"
+import { AuthContext } from "../../Contexts/AuthContext"
 
 function Footer() {
+
+    const { usuario } = useContext(AuthContext);
     return (
         <footer className='flex flex-col items-center bg-gradient-to-r  from-accent-pink to-accent-orange'>
 
@@ -13,23 +17,23 @@ function Footer() {
                 </div>
 
                 <div className='flex gap-2'>
-                    <a href="https://instagram.com"  target="_blank">
+                    <a href="https://instagram.com" target="_blank">
                         <InstagramLogo size={32} weight="bold" className='text-stone-50' />
                     </a>
 
-                    <a href="https://linkedin.com"  target="_blank">
+                    <a href="https://linkedin.com" target="_blank">
                         <LinkedinLogo size={32} weight="bold" className='text-stone-50' />
                     </a>
 
-                    <a href="tel:+5511967421552"  target="_blank">
+                    <a href="tel:+5511967421552" target="_blank">
                         <Phone size={32} weight="bold" className='text-stone-50' />
                     </a>
 
-                    <a href="mailto:grupo01generation@gmail.com"  target="_blank">
+                    <a href="mailto:grupo01generation@gmail.com" target="_blank">
                         <EnvelopeSimple size={32} weight="bold" className='text-stone-50' />
                     </a>
 
-                    <a href="https://github.com/Re-Aprender"  target="_blank">
+                    <a href="https://github.com/Re-Aprender" target="_blank">
                         <GithubLogo size={32} weight="bold" className='text-stone-50' />
                     </a>
                 </div>
@@ -45,6 +49,15 @@ function Footer() {
                             <Link to="/home"><li className="hover:underline">Home</li></Link>
                             <Link to="/sobre"><li className="hover:underline">Sobre</li></Link>
                             <Link to="/login"><li className="hover:underline">Login</li></Link>
+                            {
+                                usuario.token !== "" ?
+                            <>
+                                <Link to="/admin/categorias"><li className="hover:underline">Categorias</li></Link>
+                                <Link to="/admin/categorias/criar"><li className="hover:underline">Criar categoria</li></Link>
+                            </>
+                            :
+                            ""
+                            }
 
                         </ul>
                     </div>
