@@ -1,16 +1,18 @@
 
 import { Link, useNavigate } from "react-router-dom"
 import logo from "../../assets/logo.png"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { AuthContext } from "../../Contexts/AuthContext"
 import { toastAlerta } from "../../util/toastAlerta"
+import Carrinho from "../Carrinho/Carrinho"
+import { AnimatePresence } from "framer-motion"
 
 function Header() {
 
   const navigate = useNavigate()
 
 
-  const { usuario, handleLogout } = useContext(AuthContext)
+  const { usuario, handleLogout, isCarrinho, setIsCarrinho } = useContext(AuthContext)
 
   function logout() {
     handleLogout()
@@ -19,8 +21,14 @@ function Header() {
   }
 
 
+  function handleCarrinho(){
+    setIsCarrinho(!isCarrinho);
+  }
+
+
 
   return (
+    <>
     <header className=" bg-stone-50 flex items-center flex-col">
       <div className=" bg-gradient-to-r from-accent-pink to-accent-orange w-full text-center text-stone-50 p-1">
         <p>Adicione o cupom <span className="font-bold">LIVRAMENTO</span> para ganhar <span className="font-bold">10% de DESCONTO</span>! </p>
@@ -60,7 +68,7 @@ function Header() {
               <span className="material-symbols-outlined text-4xl bg-gradient-to-t from-accent-pink to-accent-orange  text-transparent bg-clip-text">
                 person
               </span></li></Link>
-            <button> <span className="material-symbols-outlined text-4xl bg-gradient-to-t from-accent-pink to-accent-orange  text-transparent bg-clip-text">
+            <button onClick={handleCarrinho}> <span className="material-symbols-outlined text-4xl bg-gradient-to-t from-accent-pink to-accent-orange  text-transparent bg-clip-text">
               shopping_basket
             </span></button>
 
@@ -69,6 +77,12 @@ function Header() {
       </div>
 
     </header>
+
+
+      <AnimatePresence>
+        {isCarrinho && <Carrinho />}
+      </AnimatePresence>
+    </>
   )
 }
 

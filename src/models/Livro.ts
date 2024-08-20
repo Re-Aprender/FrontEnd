@@ -8,4 +8,5 @@ export default interface Livro {
     editora: string;
     foto: string | null; 
     categoria: Categoria;
+    preco?: number | null;
 }

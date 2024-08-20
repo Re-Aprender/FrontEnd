@@ -29,9 +29,9 @@ function Carrossel() {
                 }}
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper max-w-full"
+                className="mySwiper max-w-full banner"
                 autoplay={{
-                    delay: 2500,
+                    delay: 5000,
                     disableOnInteraction: false,
                 }}
             >
@@ -40,7 +40,7 @@ function Carrossel() {
                     items.map((item) => (
 
                         <SwiperSlide>
-                            <img className="w-full min-h-[130px]  object-fit" src={item.img} alt="Imagem" />
+                            <img className="w-full min-h-[130px]  object-cover" src={item.img} alt="Imagem" />
                         </SwiperSlide>
                         
                     ))

@@ -19,16 +19,21 @@ function Home() {
             <h1 className="text-4xl mb-6 self-center">Bem vinde <span className="text-accent-pink font-bold">{`${usuario.nome}`}</span></h1>
           
         }
-
-        <h1 className="text-4xl mb-6 self-start">Livros <span className="text-accent-pink font-bold">didáticos;</span></h1>
-
+  
    </div>
-      <SectionBook />
+
+      <div className="container">
+        <h1 className="text-4xl mt-8 mb-6 self-start ">Todos <span className="text-accent-orange font-bold">livros;</span></h1>
+      </div>
+      <SectionBook didatico={true} ignore={true} />
+      <div className="container">
+        <h1 className="text-4xl mt-8 mb-6 self-start ">Livros <span className="text-accent-pink font-bold">didáticos;</span></h1>
+      </div>
+      <SectionBook didatico={true} ignore={false} />
       <div className="container">
         <h1 className="text-4xl mt-8 mb-6 self-start ">Livros de <span className="text-accent-orange font-bold">ficção;</span></h1>
-
       </div>
-      <SectionBook/>
+      <SectionBook didatico={false} ignore={false} />
 
  
     

@@ -1,17 +1,81 @@
-import Book from "../Book/Book";
+import Book from "../Book/BookCard/Book";
+import 'swiper/css';
+import 'swiper/css/scrollbar';
+import "./Swiper.css"
+
+import { Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect, useState } from "react";
+import Livro from "../../models/Livro";
+import { buscar } from "../../services/Service";
 
 
-function SectionBook() {
-  
-const elements = [];
-  
-  for (let i = 0; i < 20; i++) {
-    elements.push(<Book key={i}/>);
+interface SectionBook {
+  didatico: boolean
+  ignore?: boolean
+}
+
+
+
+function SectionBook({ didatico, ignore }: SectionBook) {
+  const [livros, setLivros] = useState<Livro[]>([]);
+
+
+  async function buscarTemas() {
+    await buscar('/livros', setLivros, {
+      headers: {},
+    });
   }
+
+  useEffect(() => {
+    buscarTemas();
+
+
+  }
+    , [livros.length]);
+
   return (
-    <div
-    className="pl-4 bg-stone-100 rounded-lg shadow-lg container overflow-x-scroll gap-4 py-4 pb-8 flex flex-nowrap"
-    >{elements}</div>
+    <>
+      <Swiper
+        slidesPerView={'auto'}
+        spaceBetween={16}
+        scrollbar={{
+          hide: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Scrollbar, Navigation]}
+        className="mySwiper container flex flex-start pb-8 bookList pr-9"
+      >
+        {
+          ignore == false ?
+            (
+              livros
+                .filter((livro) => livro.categoria.didatico == didatico)
+                .map((livro) => (
+                  <SwiperSlide className="max-w-fit" key={livro.id}>
+                    <Book key={livro.id} livro={livro} />
+                  </SwiperSlide>
+                ))
+            ) :
+            (
+
+              livros.map((livro) => (
+                <SwiperSlide className="max-w-fit" key={livro.id}>
+                  <Book key={livro.id} livro={livro} />
+                </SwiperSlide>
+              ))
+
+            )
+
+        }
+
+
+
+      </Swiper>
+    </>
   )
 }
 
