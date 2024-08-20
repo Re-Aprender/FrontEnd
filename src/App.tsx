@@ -17,12 +17,13 @@ import Carrossel from "./Components/Carrossel/Carrossel"
 import LivroLista from "./Components/Livros/LivroLista/LivroLista"
 import LivroFormulario from "./Components/Livros/LivroFormulario/LivroFormulario"
 import LivroDeletar from "./Components/Livros/LivroDeletar/LivroDeletar"
+import BookPage from "./Components/Book/BookPage/BookPage"
 
 function Banner() {
   const location = useLocation();
 
   if (location.pathname === "/" || location.pathname === "/home") {
-    return <Carrossel/>;
+    return <Carrossel />;
   }
 
   return null;
@@ -32,12 +33,12 @@ function Banner() {
 function App() {
   return (
     <AuthProvider>
-      <ToastContainer/>
+      <ToastContainer />
       <BrowserRouter>
         <Header />
 
         <Banner />
-      
+
 
         <div className="flex-grow flex flex-col flex-wrap items-center px-4 py-8">
           <Routes>
@@ -59,6 +60,7 @@ function App() {
             <Route path="admin/livros/criar" element={<LivroFormulario />} />
             <Route path="admin/livros/editar/:id" element={<LivroFormulario />} />
             <Route path="admin/livros/deletar/:id" element={<LivroDeletar />} />
+            <Route path="/livros" element={<BookPage />} />
 
           </Routes>
         </div>
