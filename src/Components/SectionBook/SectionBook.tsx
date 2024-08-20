@@ -1,17 +1,38 @@
 import Book from "../Book/Book";
+import 'swiper/css';
+import 'swiper/css/scrollbar';
+import "./Swiper.css"
 
+import { Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 function SectionBook() {
   
 const elements = [];
   
   for (let i = 0; i < 20; i++) {
-    elements.push(<Book key={i}/>);
+    elements.push(<SwiperSlide className="max-w-fit" key={i}><Book></Book></SwiperSlide>);
   }
   return (
-    <div
-    className="pl-4 bg-stone-100 rounded-lg shadow-lg container overflow-x-scroll gap-4 py-4 pb-8 flex flex-nowrap"
-    >{elements}</div>
+ 
+
+    <>
+      <Swiper
+        slidesPerView={'auto'}
+        spaceBetween={16}
+        scrollbar={{
+          hide: true,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[ Scrollbar, Navigation]}
+        className="mySwiper container flex flex-start pb-8 bookList"
+      >
+        {elements}
+      </Swiper>
+    </>
   )
 }
 

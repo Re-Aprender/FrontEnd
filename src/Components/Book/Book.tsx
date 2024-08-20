@@ -4,7 +4,7 @@ import React from 'react'
 function Book() {
   return (
     <div
-      className='flex flex-col  p-4 flex-nowrap bg-stone-50 shadow-lg rounded-lg '
+      className='flex flex-col  p-4 flex-nowrap w-fit bg-stone-50 shadow-lg rounded-lg '
     >
 
       <BookOpen size={256} color="#dddddd"/>

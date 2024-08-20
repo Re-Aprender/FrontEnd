@@ -1,0 +1,29 @@
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.bookList .swiper-button-next {
+    color: #ff5595;
+
+}
+
+.bookList .swiper-button-prev {
+    color: #ff5595;
+}
+
+
+@media screen and (max-width: 600px){
+    .bookList .swiper-button-next {
+    display:none;
+
+}
+
+.bookList .swiper-button-prev {
+        display:none;
+
+}
+}

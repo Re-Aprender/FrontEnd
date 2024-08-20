@@ -29,9 +29,9 @@ function Carrossel() {
                 }}
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper max-w-full"
+                className="mySwiper max-w-full banner"
                 autoplay={{
-                    delay: 2500,
+                    delay: 5000,
                     disableOnInteraction: false,
                 }}
             >
