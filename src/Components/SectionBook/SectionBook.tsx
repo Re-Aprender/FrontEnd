@@ -9,8 +9,17 @@ import { useEffect, useState } from "react";
 import Livro from "../../models/Livro";
 import { buscar } from "../../services/Service";
 
-function SectionBook() {
+
+interface SectionBook {
+  didatico: boolean
+  ignore?: boolean
+}
+
+
+
+function SectionBook({ didatico, ignore }: SectionBook) {
   const [livros, setLivros] = useState<Livro[]>([]);
+
 
   async function buscarTemas() {
     await buscar('/livros', setLivros, {
@@ -20,7 +29,10 @@ function SectionBook() {
 
   useEffect(() => {
     buscarTemas();
-  }, [livros.length]);
+
+
+  }
+    , [livros.length]);
 
   return (
     <>
@@ -37,12 +49,30 @@ function SectionBook() {
         modules={[Scrollbar, Navigation]}
         className="mySwiper container flex flex-start pb-8 bookList pr-9"
       >
+        {
+          ignore == false ?
+            (
+              livros
+                .filter((livro) => livro.categoria.didatico == didatico)
+                .map((livro) => (
+                  <SwiperSlide className="max-w-fit" key={livro.id}>
+                    <Book key={livro.id} livro={livro} />
+                  </SwiperSlide>
+                ))
+            ) :
+            (
 
-        {livros.map((livro) => (
-          <SwiperSlide className="max-w-fit" key={livro.id}>
-            <Book key={livro.id} livro={livro} />
-          </SwiperSlide>
-        ))}
+              livros.map((livro) => (
+                <SwiperSlide className="max-w-fit" key={livro.id}>
+                  <Book key={livro.id} livro={livro} />
+                </SwiperSlide>
+              ))
+
+            )
+
+        }
+
+
 
       </Swiper>
     </>
