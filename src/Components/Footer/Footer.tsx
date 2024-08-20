@@ -41,7 +41,7 @@ function Footer() {
             </div>
 
             <div className=' bg-stone-50 w-full flex flex-col items-center'>
-                <div className='container  p-4 flex'>
+                <div className='container  p-4 flex justify-between'>
 
                     <div>
                         <h3 className='text-2xl mb-2  font-semibold'>Páginas:</h3>
@@ -49,18 +49,27 @@ function Footer() {
                             <Link to="/home"><li className="hover:underline">Home</li></Link>
                             <Link to="/sobre"><li className="hover:underline">Sobre</li></Link>
                             <Link to="/login"><li className="hover:underline">Login</li></Link>
-                            {
-                                usuario.token !== "" ?
-                            <>
-                                <Link to="/admin/categorias"><li className="hover:underline">Categorias</li></Link>
-                                <Link to="/admin/categorias/criar"><li className="hover:underline">Criar categoria</li></Link>
-                            </>
-                            :
-                            ""
-                            }
+                      
 
                         </ul>
                     </div>
+
+
+                    {
+                        usuario.usuario === "root@root.com" &&
+                            <div>
+                                <h3 className='text-2xl mb-2  font-semibold'>Sessão Admin:</h3>
+                                <ul className="flex-col gap-4 items-center list-disc pl-5">
+                                    <>
+                                        <Link to="/admin/categorias"><li className="hover:underline">Categorias</li></Link>
+                                        <Link to="/admin/categorias/criar"><li className="hover:underline">Criar categoria</li></Link>
+                                        <Link to="/admin/livros"><li className="hover:underline">Livros</li></Link>
+                                        <Link to="/admin/livros/criar"><li className="hover:underline">Criar livro</li></Link>
+                                    </>
+                                </ul>
+                            </div>
+                    }
+            
 
                 </div>
 

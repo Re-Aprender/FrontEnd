@@ -14,6 +14,9 @@ import CategoriaLista from "./Components/Categoria/CategoriaLista/CategoriaLista
 import CategoriaFormulario from "./Components/Categoria/CategoriaFormulario/CategoriaFormulario"
 import CategoriaDeletar from "./Components/Categoria/CategoriaDeletar/CategoriaDeletar"
 import Carrossel from "./Components/Carrossel/Carrossel"
+import LivroLista from "./Components/Livros/LivroLista/LivroLista"
+import LivroFormulario from "./Components/Livros/LivroFormulario/LivroFormulario"
+import LivroDeletar from "./Components/Livros/LivroDeletar/LivroDeletar"
 
 function Banner() {
   const location = useLocation();
@@ -51,6 +54,11 @@ function App() {
             <Route path="admin/categorias/criar" element={<CategoriaFormulario />} />
             <Route path="admin/categorias/editar/:id" element={<CategoriaFormulario />} />
             <Route path="admin/categorias/deletar/:id" element={<CategoriaDeletar />} />
+
+            <Route path="/admin/livros" element={<LivroLista />} />
+            <Route path="admin/livros/criar" element={<LivroFormulario />} />
+            <Route path="admin/livros/editar/:id" element={<LivroFormulario />} />
+            <Route path="admin/livros/deletar/:id" element={<LivroDeletar />} />
 
           </Routes>
         </div>
