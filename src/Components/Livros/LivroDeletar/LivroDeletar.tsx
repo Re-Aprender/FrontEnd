@@ -2,11 +2,13 @@ import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from "../../../Contexts/AuthContext"
 import { buscar, deletar } from "../../../services/Service"
-import Categoria from "../../../models/Categoria"
 import { toastAlerta } from "../../../util/toastAlerta"
+import { ImageBroken } from "@phosphor-icons/react"
+import Livro from "../../../models/Livro"
+import { DNA } from "react-loader-spinner"
 
 function LivroDeletar() {
-    const [categoria, setCategoria] = useState<Categoria>({} as Categoria)
+    const [livro, setLivro] = useState<Livro>({} as Livro)
 
     const navigate = useNavigate()
 
@@ -17,11 +19,12 @@ function LivroDeletar() {
 
     async function buscarPorId(id: string) {
         try {
-            await buscar(`/categorias/${id}`, setCategoria, {
+            await buscar(`/livros/${id}`, setLivro, {
                 headers: {
                     'Authorization': token
                 }
-            })
+            }
+            )
         } catch (error: unknown) {
             if (error instanceof Error && error.toString().includes('403')) {
                 toastAlerta("O token expirou, favor logar novamente", "erro")
@@ -44,43 +47,77 @@ function LivroDeletar() {
     }, [id])
 
     function retornar() {
-        navigate("/admin/categorias")
+        navigate("/admin/livros")
     }
 
-    async function deletarCategoria() {
+
+    useEffect(() => {
+        console.log(livro)
+    }, [livro])
+
+
+    async function deletarLivro() {
         try {
-            await deletar(`/categorias/${id}`, {
+            await deletar(`/livros/${id}`, {
                 headers: {
                     'Authorization': token
                 }
             })
 
-            toastAlerta("Categoria apagada com sucesso!", "sucesso")
+            toastAlerta("Livro apagado com sucesso!", "sucesso")
 
         } catch (error) {
-            toastAlerta("Erro ao apagar categoria.", "erro")
+            toastAlerta("Erro ao apagar livro.", "erro")
         }
 
         retornar()
     }
     return (
         <div className='container mx-auto'>
-            <h1 className='text-4xl text-center my-4'>Deletar categoria</h1>
+            <h1 className='text-4xl text-center my-4'>Deletar livro</h1>
 
-            <p className='text-center font-semibold mb-4'>Você tem certeza de que deseja apagar a categoria a seguir?</p>
+            <p className='text-center font-semibold mb-4'>Você tem certeza de que deseja apagar o livro a seguir?</p>
 
-            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between max-w-[30rem] mx-auto'>
-                <header className='py-2 px-6 bg-gradient-to-r from-accent-pink to-accent-orange text-stone-50 font-bold text-2xl text-center'>Categoria</header>
-                <p className='pt-4 text-3xl bg-stone-50 h-full text-center'>{categoria.nome}</p>
-                <p className='py-4 text-1xl bg-stone-50 h-full text-center'>{categoria.didatico ? "Didático" : "Não Didático"}</p>
+            {!livro.nome ? <DNA
+                visible={true}
+                height="200"
+                width="200"
+                ariaLabel="dna-loading"
+                wrapperStyle={{}}
+                wrapperClass="dna-wrapper mx-auto"
+            /> :
 
-                <div className="flex">
-                    <button className='w-full text-accent-orange flex items-center justify-center py-2 bg-stone-50 border-r-2 border-t-2 border-stone-150 hover:bg-accent-orange hover:text-stone-50 duration-300' onClick={retornar}>Não</button>
-                    <button className='text-accent-orange w-full flex items-center justify-center bg-slate-50 border-t-2 border-stone-150 hover:bg-accent-orange hover:text-stone-50 duration-300' onClick={deletarCategoria}>
-                        Sim
-                    </button>
-                </div>
-            </div>
+                <div className='border flex flex-col rounded-lg overflow-hidden justify-between shadow-lg'>
+                    <header className='py-2 px-6 bg-gradient-to-r from-accent-pink to-accent-orange text-stone-50 font-bold text-2xl text-center'>Livro</header>
+                    <div className="flex flex-grow bg-stone-50 flex-row flex-nowrap p-4 gap-8 items-center">
+                        <div className='rounded-md overflow-hidden shadow-lg '>
+                            {livro.foto ?
+                                <img src={livro.foto} className='w-[150px] object-cover' />
+                                :
+                                <ImageBroken size={60} />
+                            }
+                        </div>
+                        <div className='flex-grow flex flex-col gap-2 '>
+                            <p className='text-lg font-medium'>{livro.nome}</p>
+
+                            <li className='text-1xl  '> <span className='font-medium'>Categoria:</span> {livro.categoria.nome}</li>
+                            <li className='text-1xl '><span className='font-medium'>Tipo:</span> {livro.categoria.didatico ? "Didático" : "Não Didático"}</li>
+                            <li className='text-1xl  '><span className='font-medium'>Autor:</span> {livro.autor}</li>
+                            <li className='text-1xl  '><span className='font-medium'>Editora:</span> {livro.editora}</li>
+                            <li className='text-1xl  '><span className='font-medium'>Preço:</span> R${livro?.preco}</li>
+                        </div>
+
+                    
+                    </div>
+                    <div className="flex">
+                        <button className='w-full text-accent-orange flex items-center justify-center py-2 bg-stone-50 border-r-2 border-t-2 border-stone-150 hover:bg-accent-orange hover:text-stone-50 duration-300' onClick={retornar}>Não</button>
+                        <button className='text-accent-orange w-full flex items-center justify-center bg-slate-50 border-t-2 border-stone-150 hover:bg-accent-orange hover:text-stone-50 duration-300' onClick={deletarLivro}>
+                            Sim
+                        </button>
+                    </div>
+                </div>}
+
+
         </div>
     )
 }

@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Categoria from "../../../models/Categoria";
 import { AuthContext } from "../../../Contexts/AuthContext";
 import { buscar } from "../../../services/Service";
 import { DNA } from "react-loader-spinner";
 import { toastAlerta } from "../../../util/toastAlerta";
 import LivroCard from "../LivroCard/LivroCard";
+import Livro from "../../../models/Livro";
 
 function LivroLista() {
-  const [livros, setLivros] = useState<Categoria[]>([]);
+  const [livros, setLivros] = useState<Livro[]>([]);
 
   const navigate = useNavigate();
 

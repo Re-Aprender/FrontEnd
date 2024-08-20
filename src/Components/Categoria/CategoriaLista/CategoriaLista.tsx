@@ -54,21 +54,7 @@ function CategoriaLista() {
       <div className="flex justify-center w-full my-4">
         <div className="container flex flex-col">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <LivroCard livro={{
-              id: 4,
-              nome: "Diário de um Banana: Rodrick é o Cara",
-              autor: "Jeff Kinney",
-              anoLancamento: "2008",
-              editora: "VR Editora",
-              foto: "https://m.media-amazon.com/images/I/71+fh2vstSL._SY342_.jpg",
-              preco: 29.99,
-              categoria: {
-                "id": 14,
-                "didatico": false,
-                "nome": "Fantasia",
-                livro: []
-              }
-            }}/>
+      
             {categorias.map((categoria) => (
          
                 <CategoriaCard key={categoria.id} categoria={categoria} />

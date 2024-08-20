@@ -15,7 +15,12 @@ function LivroFormulario() {
   const token = usuario.token;
 
   const [categorias, setCategorias] = useState<Categoria[]>([]);
-  const [categoria, setCategoria] = useState<Categoria>({} as Categoria);
+  const [categoria, setCategoria] = useState<Categoria>(
+    {
+      id: 0,  
+      nome: "",
+      didatico: false
+  });
 
 
   async function buscarPorId(id: string) {
@@ -26,14 +31,6 @@ function LivroFormulario() {
     });
   }
 
-  async function buscarTemaPorId(id: string) {
-    await buscar(`/categorias/${id}`, setCategoria, {
-      headers: {
-        Authorization: token,
-      },
-    });
-
-  }
 
   async function buscarTemas() {
     await buscar('/categorias', setCategorias, {
@@ -53,15 +50,25 @@ function LivroFormulario() {
 
   
 
-  function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+  function atualizarEstado(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const { name, value } = e.target;
 
-    setLivro({
-      ...livro,
-      [name]:  value,
-      categoria: categoria,
-    });
-
+    if(name == "categoria"){
+      setLivro(
+        {
+          ...livro,
+          categoria: {
+            id: Number(value)
+          }
+        }
+      )
+    }else{
+      setLivro({
+        ...livro,
+        [name]: value,
+      });
+    }
+ 
     console.log(JSON.stringify(livro));
   }
 
@@ -140,7 +147,7 @@ function LivroFormulario() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="nome">Autor do Livro</label>
+          <label htmlFor="autor">Autor do Livro</label>
           <input
             type="text"
             placeholder="Descrição"
@@ -152,7 +159,7 @@ function LivroFormulario() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="nome">Ano de lançamento:</label>
+          <label htmlFor="anoLancamento">Ano de lançamento:</label>
           <input
             type="text"
             placeholder="Descrição"
@@ -164,7 +171,7 @@ function LivroFormulario() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="nome">Editora:</label>
+          <label htmlFor="editora">Editora:</label>
           <input
             type="text"
             placeholder="Descrição"
@@ -176,7 +183,7 @@ function LivroFormulario() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="nome">Preço:</label>
+          <label htmlFor="preco">Preço:</label>
           <input
             type="text"
             placeholder="R$ 00.00"
@@ -188,7 +195,7 @@ function LivroFormulario() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="nome">Preço:</label>
+          <label htmlFor="foto">Foto:</label>
           <input
             type="text"
             placeholder="https://foto.com"
@@ -200,8 +207,8 @@ function LivroFormulario() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="nome">Categoria:</label>
-          <select name="tema" id="tema" className='border p-2 border-slate-800 rounded' onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
+          <label htmlFor="categoria">Categoria:</label>
+          <select name="categoria" id="categoria" className='border p-2 border-slate-800 rounded' onChange={atualizarEstado}>
             <option value="" selected disabled>Selecione uma categoria</option>
             {categorias.map((categoria) => (
                 <option value={categoria.id} >{categoria.nome}</option>
