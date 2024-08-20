@@ -10,6 +10,8 @@ interface AuthContextProps {
     handleLogout(): void
     handleLogin(usuario: UsuarioLogin): Promise<void>
     isLoading: boolean
+    isCarrinho: boolean
+    setIsCarrinho(change: boolean):void
     setIsLoading(carregando: boolean): void
 }
 
@@ -31,6 +33,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     })
 
     const [isLoading, setIsLoading] = useState(false)
+    const [isCarrinho, setIsCarrinho] = useState(false)
+
 
     async function handleLogin(userLogin: UsuarioLogin) {
         setIsLoading(true)
@@ -58,7 +62,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
 
     return (
-        <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading, setIsLoading }}>
+        <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading, setIsLoading, isCarrinho, setIsCarrinho }}>
             {children}
         </AuthContext.Provider>
     )

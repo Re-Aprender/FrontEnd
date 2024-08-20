@@ -40,7 +40,7 @@ function Carrossel() {
                     items.map((item) => (
 
                         <SwiperSlide>
-                            <img className="w-full min-h-[130px]  object-fit" src={item.img} alt="Imagem" />
+                            <img className="w-full min-h-[130px]  object-cover" src={item.img} alt="Imagem" />
                         </SwiperSlide>
                         
                     ))

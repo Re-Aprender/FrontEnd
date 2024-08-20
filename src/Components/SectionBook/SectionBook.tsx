@@ -21,7 +21,7 @@ const elements = [];
         slidesPerView={'auto'}
         spaceBetween={16}
         scrollbar={{
-          hide: true,
+          hide: false,
         }}
         pagination={{
           clickable: true,
