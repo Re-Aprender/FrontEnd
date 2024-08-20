@@ -1,21 +1,28 @@
-import Book from "../Book/Book";
+import Book from "../Book/BookCard/Book";
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import "./Swiper.css"
 
 import { Navigation, Pagination, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect, useState } from "react";
+import Livro from "../../models/Livro";
+import { buscar } from "../../services/Service";
 
 function SectionBook() {
-  
-const elements = [];
-  
-  for (let i = 0; i < 20; i++) {
-    elements.push(<SwiperSlide className="max-w-fit" key={i}><Book></Book></SwiperSlide>);
-  }
-  return (
- 
+  const [livros, setLivros] = useState<Livro[]>([]);
 
+  async function buscarTemas() {
+    await buscar('/livros', setLivros, {
+      headers: {},
+    });
+  }
+
+  useEffect(() => {
+    buscarTemas();
+  }, [livros.length]);
+
+  return (
     <>
       <Swiper
         slidesPerView={'auto'}
@@ -27,10 +34,16 @@ const elements = [];
           clickable: true,
         }}
         navigation={true}
-        modules={[ Scrollbar, Navigation]}
-        className="mySwiper container flex flex-start pb-8 bookList"
+        modules={[Scrollbar, Navigation]}
+        className="mySwiper container flex flex-start pb-8 bookList pr-9"
       >
-        {elements}
+
+        {livros.map((livro) => (
+          <SwiperSlide className="max-w-fit" key={livro.id}>
+            <Book key={livro.id} livro={livro} />
+          </SwiperSlide>
+        ))}
+
       </Swiper>
     </>
   )
