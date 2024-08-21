@@ -5,7 +5,7 @@ import { buscar, deletar } from "../../../services/Service"
 import { toastAlerta } from "../../../util/toastAlerta"
 import { ImageBroken } from "@phosphor-icons/react"
 import Livro from "../../../models/Livro"
-import { DNA } from "react-loader-spinner"
+import { DNA, FallingLines } from "react-loader-spinner"
 
 function LivroDeletar() {
     const [livro, setLivro] = useState<Livro>({} as Livro)
@@ -78,14 +78,9 @@ function LivroDeletar() {
 
             <p className='text-center font-semibold mb-4'>Você tem certeza de que deseja apagar o livro a seguir?</p>
 
-            {!livro.nome ? <DNA
-                visible={true}
-                height="200"
-                width="200"
-                ariaLabel="dna-loading"
-                wrapperStyle={{}}
-                wrapperClass="dna-wrapper mx-auto"
-            /> :
+            {!livro.nome ? <FallingLines color="#ff7155" width="200" height="200" visible={true} />
+
+                :
 
                 <div className='border flex flex-col rounded-lg overflow-hidden justify-between shadow-lg'>
                     <header className='py-2 px-6 bg-gradient-to-r from-accent-pink to-accent-orange text-stone-50 font-bold text-2xl text-center'>Livro</header>
@@ -107,7 +102,7 @@ function LivroDeletar() {
                             <li className='text-1xl  '><span className='font-medium'>Preço:</span> R${livro?.preco}</li>
                         </div>
 
-                    
+
                     </div>
                     <div className="flex">
                         <button className='w-full text-accent-orange flex items-center justify-center py-2 bg-stone-50 border-r-2 border-t-2 border-stone-150 hover:bg-accent-orange hover:text-stone-50 duration-300' onClick={retornar}>Não</button>

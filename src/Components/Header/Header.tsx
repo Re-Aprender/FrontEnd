@@ -1,7 +1,7 @@
 
 import { Link, useNavigate } from "react-router-dom"
 import logo from "../../assets/logo.png"
-import { useContext, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import { AuthContext } from "../../Contexts/AuthContext"
 import { toastAlerta } from "../../util/toastAlerta"
 import Carrinho from "../Carrinho/Carrinho"
@@ -26,6 +26,15 @@ function Header() {
   }
 
 
+  const pesquisaRef = useRef<HTMLInputElement>(null);
+
+  function handlePesquisa(e : Event) {
+    e.preventDefault();
+    if(pesquisaRef.current?.value){
+      navigate(`/pesquisar/${pesquisaRef.current.value}`)
+    }
+  }
+
 
   return (
     <>
@@ -35,22 +44,21 @@ function Header() {
       </div>
       <div className="container p-4 flex flex-wrap gap-2 sm:align-middle md:justify-between items-center  ">
 
-        <Link to="/">
+          <Link to="/" className="flex-grow flex justify-center md:justify-start">
           <div className="max-w-72">
             <img src={logo} alt="Logo do projeto Reaprender" />
           </div>
         </Link>
 
-
-        <div className="flex bg-stone-100 flex-grow max-w-[30rem] items-center rounded-lg">
-          <input className="outline-none flex-grow bg-transparent p-3" type="search" placeholder="Pesquisar livro..." />
+        <form onSubmit={handlePesquisa} className="flex bg-stone-100 flex-grow max-w-full md:max-w-[30rem] items-center rounded-lg">
+          <input ref={pesquisaRef} className="outline-none flex-grow bg-transparent p-3" type="search" placeholder="Pesquisar livro..." />
           <button className="flex items-center px-2"> <span className="material-symbols-outlined">
             search
           </span></button>
-        </div>
+        </form>
 
-        <nav>
-          <ul className="flex gap-4 items-center  ">
+        <nav className="flex-grow">
+          <ul className="flex gap-2 items-center flex-shrink-0 flex-wrap flex-grow justify-center md:justify-end">
             <Link to="/home"><li className="hover:underline">Home</li></Link>
             <Link to="/sobre"><li className="hover:underline">Sobre</li></Link>
            

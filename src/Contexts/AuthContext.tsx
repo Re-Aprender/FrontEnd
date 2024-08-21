@@ -3,6 +3,7 @@ import { createContext, ReactNode, useState } from "react"
 import UsuarioLogin from "../models/UsuarioLogin"
 import { login } from "../services/Service"
 import { toastAlerta } from "../util/toastAlerta"
+import Livro from "../models/Livro"
 // import { toastAlerta } from "../utils/toastAlerta"
 
 interface AuthContextProps {
@@ -13,6 +14,9 @@ interface AuthContextProps {
     isCarrinho: boolean
     setIsCarrinho(change: boolean):void
     setIsLoading(carregando: boolean): void
+    carrinho: Livro[]
+    removerDoCarrinho(id: number): void
+    adicionarNoCarrinho(livro: Livro): void
 }
 
 interface AuthProviderProps {
@@ -34,7 +38,22 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [isCarrinho, setIsCarrinho] = useState(false)
+    const [carrinho , setCarrinho] = useState<Livro[]>([])
+    
+    function adicionarNoCarrinho(livro: Livro) {
+        let lista = [...carrinho];
+        const livroExistente = lista.find(item => item.id === livro.id);
+        if (!livroExistente) {
+            lista.push(livro);
+            setCarrinho(lista);
+        }
+        console.log(lista);
+    }
 
+    function removerDoCarrinho(id: number){
+        let lista = [...carrinho].filter(livro => livro.id !== id);
+        setCarrinho(lista)
+    }
 
     async function handleLogin(userLogin: UsuarioLogin) {
         setIsLoading(true)
@@ -62,7 +81,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
 
     return (
-        <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading, setIsLoading, isCarrinho, setIsCarrinho }}>
+        <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading, setIsLoading, isCarrinho, setIsCarrinho, carrinho, adicionarNoCarrinho, removerDoCarrinho }}>
             {children}
         </AuthContext.Provider>
     )

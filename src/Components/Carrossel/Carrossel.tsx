@@ -14,8 +14,8 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 function Carrossel() {
 
     var items = [
-        { img: "https://firebasestorage.googleapis.com/v0/b/reaprender-65b7d.appspot.com/o/banner.png?alt=media&token=bad7f120-3dfe-47ff-af26-f9b1e86ef161" },
-        { img: "https://firebasestorage.googleapis.com/v0/b/reaprender-65b7d.appspot.com/o/bannerrobotica.png?alt=media&token=2b291b13-3230-4622-ad7c-ecce0a0e460c" },
+        { img: "https://firebasestorage.googleapis.com/v0/b/reaprender-65b7d.appspot.com/o/bannerrobotica.png?alt=media&token=0dd5a6e6-70a5-4763-91f5-1c75cd239fc5" },
+        { img: "https://firebasestorage.googleapis.com/v0/b/reaprender-65b7d.appspot.com/o/bannerarte.png?alt=media&token=dc292523-1309-48a0-8f3c-d8fbbc348bed" },
     ]
 
     return (

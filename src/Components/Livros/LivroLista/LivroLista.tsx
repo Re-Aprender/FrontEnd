@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthContext";
 import { buscar } from "../../../services/Service";
-import { DNA } from "react-loader-spinner";
+import { DNA, FallingLines } from "react-loader-spinner";
 import { toastAlerta } from "../../../util/toastAlerta";
 import LivroCard from "../LivroCard/LivroCard";
 import Livro from "../../../models/Livro";
@@ -41,14 +41,8 @@ function LivroLista() {
   return (
     <>
       {livros.length === 0 && (
-        <DNA
-          visible={true}
-          height="200"
-          width="200"
-          ariaLabel="dna-loading"
-          wrapperStyle={{}}
-          wrapperClass="dna-wrapper mx-auto"
-        />
+        <FallingLines color="#ff7155" width="200" height="200" visible={true} />
+
       )}
       <div className="flex justify-center w-full my-4">
         <div className="container flex flex-col">

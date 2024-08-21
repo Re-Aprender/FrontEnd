@@ -63,7 +63,7 @@ function Sobre() {
           </div>
 
           <div className='max-w-80 shadow rounded-xl overflow-hidden'>
-            <img className='max-w-full h-96 object-cover' src={lucas} alt="" />
+            <img className='h-96 object-cover rounded-t-xl' src={lucas} alt="" />
             <h3 className='px-3 pt-2 pb-1 font-bold text-xl'>Lucas Barbosa</h3>
             <ul className='px-3 pb-3'>
               <li>✓ 20 anos</li>
