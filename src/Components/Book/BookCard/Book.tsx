@@ -25,8 +25,9 @@ function Book({ livro }: LivroCardProps) {
       <img className='h-[250px] object-cover rounded-lg self-center' src={livro.foto} alt="" />
       <h2 className="text-2xl">{livro.nome}</h2>
       <p className="">{livro.autor}</p>
-    <button onClick={() => handleAdd(livro)}>Adicionar no carrinho</button>
+
       <button className='bg-gradient-to-r  from-accent-pink to-accent-orange p-2 rounded-md shadow-md text-stone-50 mt-8'><Link to="/livros">Comprar</Link></button>
+      <Link className='' to={`/livros/${livro.id}`}><button className='min-w-full bg-gradient-to-r from-accent-pink to-accent-orange p-2 rounded-md shadow-md text-stone-50 mt-8'>Comprar</button></Link>
     </div>
   )
 }
