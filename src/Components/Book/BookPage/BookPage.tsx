@@ -12,7 +12,7 @@ function BookPage() {
     const { id } = useParams<{ id: string }>();
 
 
-    const {adicionarNoCarrinho, setIsCarrinho} = useContext(AuthContext);
+    const { adicionarNoCarrinho, setIsCarrinho } = useContext(AuthContext);
 
     async function buscarPorId(id: string) {
         await buscar(`/livros/${id}`, setLivro, {
@@ -27,7 +27,7 @@ function BookPage() {
     }, [id]);
 
     function handleCarrinho() {
-        if(livro.nome){
+        if (livro.nome) {
             adicionarNoCarrinho(livro)
             setIsCarrinho(true)
         }
@@ -36,7 +36,7 @@ function BookPage() {
     return (
         <>
             <div className='container bg-stone-50 grid  sm:grid-cols-1 lg:grid-cols-2  rounded-lg p-8 w-full max-w-[950px]  gap-8'>
-                <div>
+                <div className='sm:flex sm:justify-center'>
                     {livro.foto ? <img className='rounded-md h-full object-cover' src={livro.foto} alt="" />
                         :
                         <div className='flex items-center justify-center w-full h-full'>                        <FallingLines color="#ff7155" width="200" height="200" visible={true} />
