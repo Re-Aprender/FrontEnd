@@ -9,6 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import Livro from "../../models/Livro";
 import { buscar } from "../../services/Service";
 import { AuthContext } from "../../Contexts/AuthContext";
+import { FallingLines } from "react-loader-spinner";
 
 
 interface SectionBook {
@@ -40,7 +41,7 @@ function SectionBook({ didatico, ignore }: SectionBook) {
 
   return (
     <>
-      <Swiper
+      {livros.length > 0 ? <Swiper
         slidesPerView={'auto'}
         spaceBetween={16}
         scrollbar={{
@@ -78,7 +79,11 @@ function SectionBook({ didatico, ignore }: SectionBook) {
 
 
 
-      </Swiper>
+      </Swiper> : 
+        <FallingLines color="#ff7155" width="200" height="200" visible={true}  />
+
+      }
+     
     </>
   )
 }

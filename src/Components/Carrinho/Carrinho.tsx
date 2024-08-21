@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthContext';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import CarrinhoItem from './CarrinhoItem';
 
 function Carrinho() {
@@ -32,8 +32,10 @@ function Carrinho() {
             >
                 <h1 className="text-4xl mb-6 self-start">Seu <span className="text-accent-pink font-bold">carrinho;</span></h1>
                     <div className='flex  flex-col gap-4 mb-4'>
-                   
+                   <AnimatePresence>
                     {carrinho.map((livro) => (<CarrinhoItem key={livro.id} livro={livro}></CarrinhoItem>))}
+
+                   </AnimatePresence>
 
                     </div>
                 <div className='flex items-center gap-2 px-2 pb-4'>

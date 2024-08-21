@@ -18,6 +18,7 @@ import LivroLista from "./Components/Livros/LivroLista/LivroLista"
 import LivroFormulario from "./Components/Livros/LivroFormulario/LivroFormulario"
 import LivroDeletar from "./Components/Livros/LivroDeletar/LivroDeletar"
 import BookPage from "./Components/Book/BookPage/BookPage"
+import Pesquisa from "./pages/Pesquisa/Pesquisa"
 
 function Banner() {
   const location = useLocation();
@@ -50,6 +51,10 @@ function App() {
             <Route path="/sobre" element={<Sobre />} />
             <Route path="*" element={<NotFound />} />
 
+            <Route path="/livros/:id" element={<BookPage />} />
+
+            <Route path="/pesquisar/:pesquisa" element={<Pesquisa />} />
+
             {/* Sessão de administrador */}
             <Route path="/admin/categorias" element={<CategoriaLista />} />
             <Route path="admin/categorias/criar" element={<CategoriaFormulario />} />
@@ -60,7 +65,7 @@ function App() {
             <Route path="admin/livros/criar" element={<LivroFormulario />} />
             <Route path="admin/livros/editar/:id" element={<LivroFormulario />} />
             <Route path="admin/livros/deletar/:id" element={<LivroDeletar />} />
-            <Route path="/livros/:id" element={<BookPage />} />
+    
 
           </Routes>
         </div>
