@@ -60,7 +60,7 @@ function App() {
             <Route path="admin/livros/criar" element={<LivroFormulario />} />
             <Route path="admin/livros/editar/:id" element={<LivroFormulario />} />
             <Route path="admin/livros/deletar/:id" element={<LivroDeletar />} />
-            <Route path="/livros" element={<BookPage />} />
+            <Route path="/livros/:id" element={<BookPage />} />
 
           </Routes>
         </div>
