@@ -5,9 +5,10 @@ import "./Swiper.css"
 
 import { Navigation, Pagination, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Livro from "../../models/Livro";
 import { buscar } from "../../services/Service";
+import { AuthContext } from "../../Contexts/AuthContext";
 
 
 interface SectionBook {
@@ -16,23 +17,26 @@ interface SectionBook {
 }
 
 
-
 function SectionBook({ didatico, ignore }: SectionBook) {
   const [livros, setLivros] = useState<Livro[]>([]);
 
+  const { adicionarNoCarrinho } = useContext(AuthContext)
 
   async function buscarTemas() {
     await buscar('/livros', setLivros, {
       headers: {},
     });
+
   }
 
   useEffect(() => {
     buscarTemas();
 
-
+ 
+    
   }
-    , [livros.length]);
+    , []);
+
 
   return (
     <>
