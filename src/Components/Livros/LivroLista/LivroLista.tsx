@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthContext";
 import { buscar } from "../../../services/Service";
-import { DNA, FallingLines } from "react-loader-spinner";
+import { FallingLines } from "react-loader-spinner";
 import { toastAlerta } from "../../../util/toastAlerta";
 import LivroCard from "../LivroCard/LivroCard";
 import Livro from "../../../models/Livro";

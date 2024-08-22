@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Usuario from '../../models/Usuario'
 import { cadastrarUsuario } from '../../services/Service'
 import { AuthContext } from '../../Contexts/AuthContext'
-import { Bars, Grid } from 'react-loader-spinner'
+import { Bars} from 'react-loader-spinner'
 import { toastAlerta } from '../../util/toastAlerta'
 
 function Cadastro() {

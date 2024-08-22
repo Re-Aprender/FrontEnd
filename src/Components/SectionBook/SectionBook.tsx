@@ -2,46 +2,49 @@ import Book from "../Book/BookCard/Book";
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import "./Swiper.css"
-
-import { Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { Navigation, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Livro from "../../models/Livro";
 import { buscar } from "../../services/Service";
-import { AuthContext } from "../../Contexts/AuthContext";
 import { FallingLines } from "react-loader-spinner";
-
-
+import { toastAlerta } from "../../util/toastAlerta";
 interface SectionBook {
   didatico: boolean
   ignore?: boolean
 }
 
-
 function SectionBook({ didatico, ignore }: SectionBook) {
   const [livros, setLivros] = useState<Livro[]>([]);
 
-  const { adicionarNoCarrinho } = useContext(AuthContext)
+  const [isLoading, setIsLoading] = useState(true);
 
   async function buscarTemas() {
-    await buscar('/livros', setLivros, {
-      headers: {},
-    });
 
+    try{
+      setIsLoading(true);
+
+      await buscar('/livros', setLivros, {
+        headers: {},
+      });
+      setIsLoading(false)
+    }catch(e) {
+      setIsLoading(false)
+      toastAlerta("Erro ao carregar livros.", "erro")
+    }
+   
   }
 
   useEffect(() => {
     buscarTemas();
-
- 
-    
   }
     , []);
 
-
   return (
     <>
-      {livros.length > 0 ? <Swiper
+      {!isLoading ? 
+      
+      <Swiper
         slidesPerView={'auto'}
         spaceBetween={16}
         scrollbar={{
@@ -55,6 +58,7 @@ function SectionBook({ didatico, ignore }: SectionBook) {
         className="mySwiper container flex flex-start pb-8 bookList pr-9"
       >
         {
+          livros.length > 0 ?(
           ignore == false ?
             (
               livros
@@ -66,24 +70,21 @@ function SectionBook({ didatico, ignore }: SectionBook) {
                 ))
             ) :
             (
-
               livros.map((livro) => (
                 <SwiperSlide className="max-w-fit" key={livro.id}>
                   <Book key={livro.id} livro={livro} />
                 </SwiperSlide>
               ))
+            ))
+            :
 
-            )
-
+              <SwiperSlide className="max-w-fit">
+                <p>Não existem livros registrados</p>
+                </SwiperSlide>
         }
-
-
-
       </Swiper> : 
         <FallingLines color="#ff7155" width="200" height="200" visible={true}  />
-
       }
-     
     </>
   )
 }

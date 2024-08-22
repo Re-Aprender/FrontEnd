@@ -5,7 +5,7 @@ import { buscar, deletar } from "../../../services/Service"
 import { toastAlerta } from "../../../util/toastAlerta"
 import { ImageBroken } from "@phosphor-icons/react"
 import Livro from "../../../models/Livro"
-import { DNA, FallingLines } from "react-loader-spinner"
+import { FallingLines } from "react-loader-spinner"
 
 function LivroDeletar() {
     const [livro, setLivro] = useState<Livro>({} as Livro)
@@ -50,11 +50,9 @@ function LivroDeletar() {
         navigate("/admin/livros")
     }
 
-
     useEffect(() => {
         console.log(livro)
     }, [livro])
-
 
     async function deletarLivro() {
         try {
@@ -75,13 +73,9 @@ function LivroDeletar() {
     return (
         <div className='container mx-auto'>
             <h1 className='text-4xl text-center my-4'>Deletar livro</h1>
-
             <p className='text-center font-semibold mb-4'>Você tem certeza de que deseja apagar o livro a seguir?</p>
-
             {!livro.nome ? <FallingLines color="#ff7155" width="200" height="200" visible={true} />
-
                 :
-
                 <div className='border flex flex-col rounded-lg overflow-hidden justify-between shadow-lg'>
                     <header className='py-2 px-6 bg-gradient-to-r from-accent-pink to-accent-orange text-stone-50 font-bold text-2xl text-center'>Livro</header>
                     <div className="flex flex-grow bg-stone-50 flex-row flex-nowrap p-4 gap-8 items-center">
@@ -101,8 +95,6 @@ function LivroDeletar() {
                             <li className='text-1xl  '><span className='font-medium'>Editora:</span> {livro.editora}</li>
                             <li className='text-1xl  '><span className='font-medium'>Preço:</span> R${livro?.preco}</li>
                         </div>
-
-
                     </div>
                     <div className="flex">
                         <button className='w-full text-accent-orange flex items-center justify-center py-2 bg-stone-50 border-r-2 border-t-2 border-stone-150 hover:bg-accent-orange hover:text-stone-50 duration-300' onClick={retornar}>Não</button>
@@ -111,8 +103,6 @@ function LivroDeletar() {
                         </button>
                     </div>
                 </div>}
-
-
         </div>
     )
 }

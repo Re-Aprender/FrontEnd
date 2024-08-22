@@ -15,13 +15,6 @@ function LivroFormulario() {
   const token = usuario.token;
 
   const [categorias, setCategorias] = useState<Categoria[]>([]);
-  const [categoria, setCategoria] = useState<Categoria>(
-    {
-      id: 0,  
-      nome: "",
-      didatico: false
-  });
-
 
   async function buscarPorId(id: string) {
     await buscar(`/livros/${id}`, setLivro, {

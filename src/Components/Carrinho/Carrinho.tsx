@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import CarrinhoItem from './CarrinhoItem';
@@ -20,7 +20,6 @@ function Carrinho() {
             exit={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
             transition={{duration: 0.4}}
         >
-        
         </motion.aside>
 
             <motion.div
@@ -49,7 +48,6 @@ function Carrinho() {
                     Finalizar compra
                 </button>
             </motion.div>
-
         </>
     );
 }
