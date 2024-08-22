@@ -29,12 +29,12 @@ function Perfil() {
         <>
             {usuario.token !== "" ? (
                 <div className="container flex flex-col items-center justify-center mx-auto">
-                    <div className="flex gap-8 p-4 rounded-lg shadow-lg bg-stone-50 w-full items-center max-w-[800px]">
-                        <div className="w-full lg:w-52 text-xl flex flex-col gap-1">
+                    <div className="flex gap-4 p-4 rounded-lg shadow-lg bg-stone-50 w-full flex-wrap items-center max-w-[800px]">
+                        <div className=" lg:w-52 text-xl flex flex-col gap-1">
                             <p className="cursor-pointer hover:text-accent-pink font-semibold" onClick={handlePerfil}>Meu Perfil</p>
                             <p className="cursor-pointer hover:text-accent-pink font-semibold" onClick={handlePedido}>Meus Pedidos</p>
                         </div>
-                        <div className="flex flex-col lg:flex-row justify-center items-center gap-4 bg-stone-100 p-4 rounded-lg min-h-64 w-full">
+                        <div className="flex flex-col lg:flex-row justify-center items-center gap-4 bg-stone-100 p-4 rounded-lg min-h-80 w-full">
                             {pagina === 0 && (
                                 <>
                                     <img className="rounded-full h-56 w-56 object-cover border-4 border-stone-50" src={usuario.foto} alt="foto do usuário" />
