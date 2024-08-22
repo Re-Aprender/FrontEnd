@@ -1,14 +1,8 @@
-// Importando os Componentes Swiper React
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Importando os estilos Swiper
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// Importando SEU CSS
 import "./Carrossel.css"
-// Importando Modulos do Carrossel
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 function Carrossel() {
@@ -35,17 +29,14 @@ function Carrossel() {
                     disableOnInteraction: false,
                 }}
             >
-
                 {
                     items.map((item) => (
-
                         <SwiperSlide>
                             <img className="w-full min-h-[130px]  object-cover" src={item.img} alt="Imagem" />
                         </SwiperSlide>
                         
                     ))
                 }
-
             </Swiper>
         </>
     )

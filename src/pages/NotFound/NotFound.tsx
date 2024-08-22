@@ -1,8 +1,11 @@
-import React from 'react'
 
 function NotFound() {
   return (
-    <div>NotFound</div>
+    <>
+      <h1 className="text-center text-4xl medium">404;</h1>
+      <p className="text-center">Essa página não existe.</p>
+
+    </>
   )
 }
 

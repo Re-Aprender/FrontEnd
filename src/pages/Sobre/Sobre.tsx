@@ -6,7 +6,6 @@ import lucas from '../../assets/lucas.jpeg'
 import flavio from '../../assets/flavio.jpeg'
 import palloma from '../../assets/palloma.jpeg'
 import jailson from '../../assets/jailson.jpeg'
-import teste from "../../assets/jailson.jpeg"
 
 function Sobre() {
   return (

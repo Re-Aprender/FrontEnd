@@ -6,7 +6,6 @@ import NotFound from "./pages/NotFound/NotFound"
 import Header from "./Components/Header/Header"
 import Footer from "./Components/Footer/Footer"
 import 'react-toastify/dist/ReactToastify.css';
-import banner from "./assets/banner.png"
 import Cadastro from "./pages/Cadastro/Cadastro"
 import { AuthProvider } from "./Contexts/AuthContext"
 import { ToastContainer } from "react-toastify"
@@ -29,7 +28,6 @@ function Banner() {
 
   return null;
 }
-
 
 function App() {
   return (

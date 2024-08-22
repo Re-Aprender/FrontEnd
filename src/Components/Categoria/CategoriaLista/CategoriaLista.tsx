@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import Categoria from "../../../models/Categoria";
 import { AuthContext } from "../../../Contexts/AuthContext";
 import { buscar } from "../../../services/Service";
-import { DNA, FallingLines } from "react-loader-spinner";
+import { FallingLines } from "react-loader-spinner";
 import CategoriaCard from "../CategoriaCard/CategoriaCard";
 import { toastAlerta } from "../../../util/toastAlerta";
-import LivroCard from "../../Livros/LivroCard/LivroCard";
 
 function CategoriaLista() {
   const [categorias, setCategorias] = useState<Categoria[]>([]);

@@ -1,8 +1,7 @@
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import "./Swiper.css"
-
-import { Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { Navigation, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
 import Livro from "../../models/Livro";
@@ -10,8 +9,6 @@ import { buscar } from "../../services/Service";
 import { FallingLines } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
 import Book from '../../Components/Book/BookCard/Book';
-
-
 
 
 function Pesquisa() {

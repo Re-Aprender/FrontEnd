@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { CreditCard, ImageBroken, ShoppingCartSimple } from '@phosphor-icons/react'
+import { useContext, useEffect, useState } from 'react'
+import { CreditCard,  ShoppingCartSimple } from '@phosphor-icons/react'
 import Livro from '../../../models/Livro';
 import { buscar } from '../../../services/Service';
 import { useParams } from 'react-router-dom';
