@@ -18,6 +18,7 @@ import LivroFormulario from "./Components/Livros/LivroFormulario/LivroFormulario
 import LivroDeletar from "./Components/Livros/LivroDeletar/LivroDeletar"
 import BookPage from "./Components/Book/BookPage/BookPage"
 import Pesquisa from "./pages/Pesquisa/Pesquisa"
+import Perfil from "./Components/Perfil/Perfil"
 
 function Banner() {
   const location = useLocation();
@@ -63,7 +64,8 @@ function App() {
             <Route path="admin/livros/criar" element={<LivroFormulario />} />
             <Route path="admin/livros/editar/:id" element={<LivroFormulario />} />
             <Route path="admin/livros/deletar/:id" element={<LivroDeletar />} />
-    
+            <Route path="/perfil" element={<Perfil />} />
+
 
           </Routes>
         </div>
