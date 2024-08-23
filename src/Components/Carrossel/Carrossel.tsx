@@ -30,8 +30,8 @@ function Carrossel() {
                 }}
             >
                 {
-                    items.map((item) => (
-                        <SwiperSlide>
+                    items.map((item, index) => (
+                        <SwiperSlide key={index}>
                             <img className="w-full min-h-[130px]  object-cover" src={item.img} alt="Imagem" />
                         </SwiperSlide>
                         
