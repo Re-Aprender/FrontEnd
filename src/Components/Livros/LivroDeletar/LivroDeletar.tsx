@@ -71,12 +71,12 @@ function LivroDeletar() {
         retornar()
     }
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto bg-stone-50 w-full max-w-[40rem] p-4 rounded-2xl shadow-xl'>
             <h1 className='text-4xl text-center my-4'>Deletar livro</h1>
-            <p className='text-center font-semibold mb-4'>Você tem certeza de que deseja apagar o livro a seguir?</p>
+            <p className='text-center  mb-4'>Você tem certeza de que deseja apagar o livro a seguir?</p>
             {!livro.nome ? <FallingLines color="#ff7155" width="200" height="200" visible={true} />
                 :
-                <div className='border flex flex-col rounded-lg overflow-hidden justify-between shadow-lg'>
+                <div className='border border-stone-600 flex flex-col rounded-xl overflow-hidden justify-between shadow-lg'>
                     <header className='py-2 px-6 bg-gradient-to-r from-accent-pink to-accent-orange text-stone-50 font-bold text-2xl text-center'>Livro</header>
                     <div className="flex flex-grow bg-stone-50 flex-row flex-nowrap p-4 gap-8 items-center">
                         <div className='rounded-md overflow-hidden shadow-lg '>

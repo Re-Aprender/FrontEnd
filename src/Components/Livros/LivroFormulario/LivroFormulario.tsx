@@ -120,9 +120,9 @@ function LivroFormulario() {
   }, [token]);
 
   return (
-    <div className="container flex flex-col items-center justify-center mx-auto ]">
+    <div className="container flex flex-row items-center justify-center w-full">
 
-      <form className=" flex flex-col gap-4 p-4 rounded-lg shadow-lg bg-stone-50 max-w-[500px] w-full" onSubmit={gerarNovoLivro}>
+      <form className="flex flex-col w-full max-w-[30rem] gap-4 p-4 rounded-lg shadow-lg bg-stone-50 " onSubmit={gerarNovoLivro}>
         <h1 className="text-4xl text-center my-8">
           {id === undefined ? "Cadastre um livro" : "Editar livro"}
         </h1>

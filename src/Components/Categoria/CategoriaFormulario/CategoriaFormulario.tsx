@@ -96,7 +96,7 @@ function CategoriaFormulario() {
     <div className="container flex flex-col items-center justify-center mx-auto">
    
 
-      <form className=" flex flex-col gap-4 p-4 rounded-lg shadow-lg bg-stone-50" onSubmit={gerarNovaCategoria}>
+      <form className=" flex flex-col gap-4 p-4 rounded-lg max-w-[30rem] w-full shadow-lg bg-stone-50" onSubmit={gerarNovaCategoria}>
         <h1 className="text-4xl text-center my-8">
           {id === undefined ? "Cadastre uma nova categoria" : "Editar categoria"}
         </h1>

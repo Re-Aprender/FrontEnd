@@ -64,12 +64,12 @@ function CategoriaDeletar() {
         retornar()
     }
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto bg-stone-50 w-full max-w-[35rem] p-4 rounded-2xl shadow-lg'>
             <h1 className='text-4xl text-center my-4'>Deletar categoria</h1>
 
-            <p className='text-center font-semibold mb-4'>Você tem certeza de que deseja apagar a categoria a seguir?</p>
+            <p className='text-center  mb-4'>Você tem certeza de que deseja apagar a categoria a seguir?</p>
 
-            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between max-w-[30rem] mx-auto'>
+            <div className='border-2 border-stone-600 flex flex-col rounded-2xl overflow-hidden justify-between max-w-[30rem] mx-auto'>
                 <header className='py-2 px-6 bg-gradient-to-r from-accent-pink to-accent-orange text-stone-50 font-bold text-2xl text-center'>Categoria</header>
                 <p className='pt-4 text-3xl bg-stone-50 h-full text-center'>{categoria.nome}</p>
                 <p className='py-4 text-1xl bg-stone-50 h-full text-center'>{categoria.didatico ? "Didático" : "Não Didático"}</p>
