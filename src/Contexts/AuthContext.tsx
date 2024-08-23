@@ -47,7 +47,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
             lista.push(livro);
             setCarrinho(lista);
         }
-        console.log(lista);
     }
 
     function removerDoCarrinho(id: number){
@@ -63,7 +62,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
             setIsLoading(false)
 
         } catch (error) {
-            console.log(error)
             toastAlerta("Dados de usuário inconsistentes", "erro")
             setIsLoading(false)
         }

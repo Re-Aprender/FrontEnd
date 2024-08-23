@@ -62,7 +62,6 @@ function LivroFormulario() {
       });
     }
  
-    console.log(JSON.stringify(livro));
   }
 
   async function gerarNovoLivro(e: ChangeEvent<HTMLFormElement>) {

@@ -36,8 +36,6 @@ function CategoriaFormulario() {
       ...categoria,
       [name]: name === 'didatico' ? value === 'true' : value, // Manter a conversão apenas para o campo 'didatico'
     });
-
-    console.log(JSON.stringify(categoria));
   }
 
   async function gerarNovaCategoria(e: ChangeEvent<HTMLFormElement>) {
@@ -47,7 +45,6 @@ function CategoriaFormulario() {
       try {
         let categoriaEditar : Categoria = {id: categoria.id, nome: categoria.nome, didatico:categoria.didatico}
 
-        console.log(JSON.stringify(categoriaEditar))
         await atualizar(`/categorias`, categoriaEditar, setCategoria, {
           headers: {
             Authorization: token,

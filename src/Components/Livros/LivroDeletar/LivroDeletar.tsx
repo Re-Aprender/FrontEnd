@@ -51,7 +51,6 @@ function LivroDeletar() {
     }
 
     useEffect(() => {
-        console.log(livro)
     }, [livro])
 
     async function deletarLivro() {
