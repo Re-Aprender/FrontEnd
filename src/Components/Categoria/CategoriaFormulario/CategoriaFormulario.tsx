@@ -4,6 +4,7 @@ import { AuthContext } from "../../../Contexts/AuthContext";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import Categoria from "../../../models/Categoria";
 import { toastAlerta } from "../../../util/toastAlerta";
+import Livro from "../../../models/Livro";
 
 function CategoriaFormulario() {
   const [categoria, setCategoria] = useState<Categoria>({} as Categoria);
@@ -11,6 +12,7 @@ function CategoriaFormulario() {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const { usuario, handleLogout } = useContext(AuthContext);
+
   const token = usuario.token;
 
   async function buscarPorId(id: string) {
@@ -43,7 +45,10 @@ function CategoriaFormulario() {
 
     if (id !== undefined) {
       try {
-        await atualizar(`/categorias`, categoria, setCategoria, {
+        let categoriaEditar : Categoria = {id: categoria.id, nome: categoria.nome, didatico:categoria.didatico}
+
+        console.log(JSON.stringify(categoriaEditar))
+        await atualizar(`/categorias`, categoriaEditar, setCategoria, {
           headers: {
             Authorization: token,
           },
@@ -91,6 +96,8 @@ function CategoriaFormulario() {
       navigate("/login");
     }
   }, [token]);
+
+
 
   return (
     <div className="container flex flex-col items-center justify-center mx-auto">
