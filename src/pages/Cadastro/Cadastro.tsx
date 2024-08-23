@@ -78,35 +78,44 @@ function Cadastro() {
 
     return (
         <div className='container self-center flex flex-wrap justify-center gap-8'>
-
             <form onSubmit={cadastrarNovoUsuario} className='flex flex-col flex-grow-2 flex-grow max-w-[50rem] gap-y-4 p-8 bg-slate-50 shadow-lg rounded-lg'>
                 <h2 className='text-2xl'>Se cadastrar com <span className='font-bold text-accent-pink'>Email e Senha;</span></h2>
 
-                <label htmlFor="nome">Nome:</label>
-                <input onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.nome} name="nome" id="nome" placeholder="Exemplo: Rhaíssa lima diva" className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
+                <div className="flex flex-col">
+                    <label htmlFor="nome">Nome:</label>
+                    <input onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.nome} name="nome" id="nome" placeholder="Fulano da Silva" className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
+                </div>
 
-                <label htmlFor="email">Email</label>
-                <input onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.email} name="email" id="email" placeholder='Exemplo: flavio@hotmail.com' className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
+                <div className="flex flex-col">
+                    <label htmlFor="email">Email:</label>
+                    <input onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.email} name="email" id="email" placeholder='user@email.com' className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
+                </div>
 
-                <label htmlFor="senha">Senha:</label>
-                <input onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.senha} name="senha" id="senha" type="password" placeholder='Insira sua senha' className="bg-stone-200 text-stone-600 w-full px-5 py-2 rounded-lg text-lg  border border-gray-400 placeholder-text-stone-600 shadow" />
+                <div className="flex flex-col">
+                    <label htmlFor="senha">Senha:</label>
+                    <input onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.senha} name="senha" id="senha" type="password" placeholder='Insira sua senha' className="bg-stone-200 text-stone-600 w-full px-5 py-2 rounded-lg text-lg border border-gray-400 placeholder-text-stone-600 shadow" />
+                </div>
 
-                <label htmlFor="confirmarSenha">Confirmar Senha:</label>
-                <input onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)} value={confirmaSenha} name="confirmarSenha" id="confirmarSenha" type="password" placeholder='Confirme sua senha' className="bg-stone-200 text-stone-600 w-full px-5 py-2 rounded-lg text-lg  border border-gray-400 placeholder-text-stone-600 shadow" />
+                <div className="flex flex-col">
+                    <label htmlFor="confirmarSenha">Confirmar Senha:</label>
+                    <input onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)} value={confirmaSenha} name="confirmarSenha" id="confirmarSenha" type="password" placeholder='Confirme sua senha' className="bg-stone-200 text-stone-600 w-full px-5 py-2 rounded-lg text-lg border border-gray-400 placeholder-text-stone-600 shadow" />
+                </div>
 
-                <label htmlFor="foto">Foto:</label>
-                <input onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.foto} name="foto" id="foto" placeholder="Exemplo: https://imgur.com/iddaimagem" className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
+                <div className="flex flex-col">
+                    <label htmlFor="foto">Foto:</label>
+                    <input onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuario.foto} name="foto" id="foto" placeholder="Exemplo: https://imgur.com/iddaimagem" className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
+                </div>
 
                 <button
                     disabled={isLoading}
-                    className={`bg-accent-pink shadow-md text-stone-50 p-2 px-8 text-lg rounded-lg transition-colors duration-100 flex justify-center ${isLoading ? "hover:bg-accent-pink" : "hover:bg-accent-pink_dark"
-                        }`}
+                    className={`bg-accent-pink shadow-md text-stone-50 p-2 px-8 text-lg rounded-lg transition-colors duration-100 flex justify-center ${isLoading ? "hover:bg-accent-pink" : "hover:bg-accent-pink_dark"}`}
                 >
                     {!isLoading ? "Cadastrar" : <Bars color='#ffffff' width={24} height={24} />}
                 </button>
                 <p className='self-center'>Já tem um conta?{` `}<Link to="/login" className='text-cyan-600 hover:text-cyan-700'>Entre</Link>.</p>
             </form>
         </div>
+
     )
 }
 

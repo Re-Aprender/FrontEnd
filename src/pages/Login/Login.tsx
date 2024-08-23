@@ -39,7 +39,7 @@ function Login() {
     <div className=' container self-center flex flex-wrap justify-center    gap-8'>
 
       <div className='flex flex-col justify-between  flex-grow bg-stone-50 p-8 shadow-lg rounded-lg '>
-        <h2 className='text-2xl'>Entrar com <span className='font-bold text-accent-orange'>Redes Sociais;</span></h2>
+        <h2 className='text-2xl mb-4'>Entrar com <span className='font-bold text-accent-orange'>Redes Sociais;</span></h2>
         
         <div className='flex flex-col gap-4'>
           <button className='bg-stone-500 shadow-md text-stone-50 p-2 px-8 text-lg rounded-lg hover:bg-stone-600 transition-colors duration-100'>Receber código de acesso por e-mail</button>
@@ -63,7 +63,7 @@ function Login() {
         <h2 className='text-2xl'>Entrar com <span className='font-bold text-accent-orange'>Email e Senha;</span></h2>
         <div>
           <label htmlFor="email">Email:</label>
-          <input type='email' name='usuario' id='usuario' onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuarioLogin.usuario} placeholder='Exemplo: flavio@hotmail.com' className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
+          <input type='email' name='usuario' id='usuario' onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} value={usuarioLogin.usuario} placeholder='user@email.com' className="bg-stone-200 text-stone-600 w-full px-5 py-2 text-lg rounded-lg border border-gray-400 placeholder-text-stone-600 shadow" />
         </div>
         
       <div>
