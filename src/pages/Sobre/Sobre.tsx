@@ -6,6 +6,7 @@ import lucas from '../../assets/lucas.jpeg'
 import flavio from '../../assets/flavio.jpeg'
 import palloma from '../../assets/palloma.jpeg'
 import jailson from '../../assets/jailson.jpeg'
+import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react'
 
 function Sobre() {
   return (
@@ -35,70 +36,98 @@ function Sobre() {
             <img className='max-w-full h-96 object-cover' src={rhaissa} alt="" />
             <h3 className='px-3 pt-2 pb-1 font-bold text-xl'>Rhaíssa Lima</h3>
             <ul className='px-3 pb-3'>
-              <li>✓ 21 anos</li>
-              <li>✓ Rio de Janeiro - Rio de Janeiro</li>
-              <li>✓ Desenvolvedora Fullstack Java</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>21 anos</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>Rio de Janeiro - Rio de Janeiro</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>Desenvolvedora Fullstack Java</li>
             </ul>
+            <div className='px-3 pb-3 flex items-center justify-center'>
+              <a className='text-accent-pink' href="https://github.com/rhaissabg"><GithubLogo size={32} weight={"fill"} /></a>
+              <a className='text-accent-orange' href="https://www.linkedin.com/in/rhaissabg/"><LinkedinLogo size={32} weight={"fill"} /></a>
+            </div>
           </div>
 
           <div className='max-w-80 shadow rounded-xl overflow-hidden'>
             <img className='max-w-full h-96 object-cover' src={bianka} alt="" />
             <h3 className='px-3 pt-2 pb-1 font-bold text-xl'>Bianka Staianof</h3>
             <ul className='px-3 pb-3'>
-              <li>✓ 26 anos</li>
-              <li>✓ Santo André - São Paulo</li>
-              <li>✓ Desenvolvedora Fullstack Java</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>26 anos</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>Santo André - São Paulo</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>Desenvolvedora Fullstack Java</li>
             </ul>
+            <div className='px-3 pb-3 flex items-center justify-center'>
+              <a className='text-accent-pink' href="https://github.com/bonninho"><GithubLogo size={32} weight={"fill"} /></a>
+              <a className='text-accent-orange' href="https://www.linkedin.com/in/bianka-bonete-staianof-27b950b4/"><LinkedinLogo size={32} weight={"fill"} /></a>
+            </div>
           </div>
 
           <div className='max-w-80 shadow rounded-xl overflow-hidden'>
             <img className='max-w-full h-96 object-cover' src={flavio} alt="" />
             <h3 className='px-3 pt-2 pb-1 font-bold text-xl'>Flávio Coutinho</h3>
             <ul className='px-3 pb-3'>
-              <li>✓ 27 anos</li>
-              <li>✓ Zona Norte - São Paulo</li>
-              <li>✓ Desenvolvedor Fullstack Java</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>27 anos</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>Zona Norte - São Paulo</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>Desenvolvedor Fullstack Java</li>
             </ul>
+            <div className='px-3 pb-3 flex items-center justify-center'>
+              <a className='text-accent-pink' href="https://github.com/Kokinho00"><GithubLogo size={32} weight={"fill"} /></a>
+              <a className='text-accent-orange' href="https://www.linkedin.com/in/flavio-coutinho-b47a42172/"><LinkedinLogo size={32} weight={"fill"} /></a>
+            </div>
           </div>
 
           <div className='max-w-80 shadow rounded-xl overflow-hidden'>
             <img className='h-96 object-cover rounded-t-xl' src={lucas} alt="" />
             <h3 className='px-3 pt-2 pb-1 font-bold text-xl'>Lucas Barbosa</h3>
             <ul className='px-3 pb-3'>
-              <li>✓ 20 anos</li>
-              <li>✓ Jandira - São Paulo</li>
-              <li>✓ Desenvolvedor Fullstack Java</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>20 anos</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>Jandira - São Paulo</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>Desenvolvedor Fullstack Java</li>
             </ul>
+            <div className='px-3 pb-3 flex items-center justify-center'>
+              <a className='text-accent-pink' href="https://github.com/lucasbarbosa0217"><GithubLogo size={32} weight={"fill"} /></a>
+              <a className='text-accent-orange' href="https://linkedin.com/in/lucasbarbosa0217"><LinkedinLogo size={32} weight={"fill"} /></a>
+            </div>
           </div>
 
           <div className='max-w-80 shadow rounded-xl overflow-hidden'>
             <img className='max-w-full h-96 object-cover' src={jailson} alt="" />
             <h3 className='px-3 pt-2 pb-1 font-bold text-xl'>Jailson Martins</h3>
             <ul className='px-3 pb-3'>
-              <li>✓ 21 anos</li>
-              <li>✓ São Paulo - São Paulo</li>
-              <li>✓ Desenvolvedor Fullstack Java</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>21 anos</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>São Paulo - São Paulo</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>Desenvolvedor Fullstack Java</li>
             </ul>
+            <div className='px-3 pb-3 flex items-center justify-center'>
+              <a className='text-accent-pink' href="https://github.com/jailsonmartinsfilho"><GithubLogo size={32} weight={"fill"} /></a>
+              <a className='text-accent-orange' href="https://www.linkedin.com/in/jailsonmartinsfilho/"><LinkedinLogo size={32} weight={"fill"} /></a>
+            </div>
           </div>
 
           <div className='max-w-80 shadow rounded-xl overflow-hidden'>
             <img className='max-w-full h-96 object-cover' src={willian} alt="" />
             <h3 className='px-3 pt-2 pb-1 font-bold text-xl'>Willian Serafim</h3>
             <ul className='px-3 pb-3'>
-              <li>✓ 18 anos</li>
-              <li>✓ São Paulo - São Paulo</li>
-              <li>✓ Desenvolvedor Fullstack Java</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>18 anos</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>São Paulo - São Paulo</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>Desenvolvedor Fullstack Java</li>
             </ul>
+            <div className='px-3 pb-3 flex items-center justify-center'>
+              <a className='text-accent-pink' href="https://github.com/willian-seraf1m"><GithubLogo size={32} weight={"fill"} /></a>
+              <a className='text-accent-orange' href="https://www.linkedin.com/in/willian-serafim-9481782a4/"><LinkedinLogo size={32} weight={"fill"} /></a>
+            </div>
           </div>
 
           <div className='max-w-80 shadow rounded-xl overflow-hidden'>
             <img className='max-w-full h-96 object-cover' src={palloma} alt="" />
             <h3 className='px-3 pt-2 pb-1 font-bold text-xl'>Palloma Rangel</h3>
             <ul className='px-3 pb-3'>
-              <li>✓ 29 anos</li>
-              <li>✓ Rio de Janeiro - Rio de Janeiro</li>
-              <li>✓ Desenvolvedora Fullstack Java</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>29 anos</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>Rio de Janeiro - Rio de Janeiro</li>
+              <li><span className='text-accent-pink font-semibold'>✓ </span>Desenvolvedora Fullstack Java</li>
             </ul>
+            <div className='px-3 pb-3 flex items-center justify-center'>
+              <a className='text-accent-pink' href="https://github.com/rangeldatascientist"><GithubLogo size={32} weight={"fill"} /></a>
+              <a className='text-accent-orange' href="https://www.linkedin.com/in/pallomasilva/"><LinkedinLogo size={32} weight={"fill"} /></a>
+            </div>
           </div>
 
         </div>
