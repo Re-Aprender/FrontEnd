@@ -1,14 +1,20 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../Contexts/AuthContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import CarrinhoItem from './CarrinhoItem';
+import { ListaDeLivrosContext } from '../../Contexts/CarrinhoContext';
 
 function Carrinho() {
-    const { setIsCarrinho, carrinho } = useContext(AuthContext);
+    const { setIsCarrinho} = useContext(AuthContext);
+
+    const {adicionarLivro, livros,getQuantidade,} = useContext(ListaDeLivrosContext)
 
     function handleCarrinho() {
         setIsCarrinho(false);
     }
+
+    
+    
 
     return (
         <>
@@ -32,14 +38,14 @@ function Carrinho() {
                 <h1 className="text-4xl mb-6 self-start">Seu <span className="text-accent-pink font-bold">carrinho;</span></h1>
                     <div className='flex  flex-col gap-4 mb-4'>
                    <AnimatePresence>
-                    {carrinho.map((livro) => (<CarrinhoItem key={livro.id} livro={livro}></CarrinhoItem>))}
+                    {livros.map((livro) => (<CarrinhoItem key={livro.livro.id} livro={livro.livro} quantidade={livro.quantidade}></CarrinhoItem>))}
 
                    </AnimatePresence>
 
                     </div>
                 <div className='flex items-center gap-2 px-2 pb-4'>
                     <div className='h-[0.08rem] flex-grow bg-stone-300'></div>
-                    <p className='text-stone-600 font-light'>Total sem frete: <span className='font-medium text-xl text-accent-orange_dark'>R$ {"12.99"}</span></p>
+                    <p className='text-stone-600 font-light'>Total sem frete: <span className='font-medium text-xl text-accent-orange_dark'>R$ {livros.reduce((acc, item) => { return acc + (item.livro.preco) * item.quantidade }, 0).toFixed(2)}</span></p>
                 </div>
                 <button
                     className="rounded-md text-stone-50 bg-gradient-to-r from-accent-pink to-accent-orange py-2 block shadow-md"
