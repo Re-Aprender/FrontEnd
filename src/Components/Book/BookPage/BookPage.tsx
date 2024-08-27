@@ -5,6 +5,7 @@ import { buscar } from '../../../services/Service';
 import { useParams } from 'react-router-dom';
 import { FallingLines } from 'react-loader-spinner';
 import { AuthContext } from '../../../Contexts/AuthContext';
+import { ListaDeLivrosContext } from '../../../Contexts/CarrinhoContext';
 
 function BookPage() {
 
@@ -12,7 +13,9 @@ function BookPage() {
     const { id } = useParams<{ id: string }>();
 
 
-    const { adicionarNoCarrinho, setIsCarrinho } = useContext(AuthContext);
+    const {  setIsCarrinho } = useContext(AuthContext);
+
+    const {adicionarLivro} = useContext(ListaDeLivrosContext);
 
     async function buscarPorId(id: string) {
         await buscar(`/livros/${id}`, setLivro, {
@@ -28,7 +31,7 @@ function BookPage() {
 
     function handleCarrinho() {
         if (livro.nome) {
-            adicionarNoCarrinho(livro)
+            adicionarLivro(livro)
             setIsCarrinho(true)
         }
     }

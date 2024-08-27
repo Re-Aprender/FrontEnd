@@ -14,9 +14,7 @@ interface AuthContextProps {
     isCarrinho: boolean
     setIsCarrinho(change: boolean):void
     setIsLoading(carregando: boolean): void
-    carrinho: Livro[]
-    removerDoCarrinho(id: number): void
-    adicionarNoCarrinho(livro: Livro): void
+
 }
 
 interface AuthProviderProps {
@@ -38,21 +36,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [isCarrinho, setIsCarrinho] = useState(false)
-    const [carrinho , setCarrinho] = useState<Livro[]>([])
     
-    function adicionarNoCarrinho(livro: Livro) {
-        let lista = [...carrinho];
-        const livroExistente = lista.find(item => item.id === livro.id);
-        if (!livroExistente) {
-            lista.push(livro);
-            setCarrinho(lista);
-        }
-    }
-
-    function removerDoCarrinho(id: number){
-        let lista = [...carrinho].filter(livro => livro.id !== id);
-        setCarrinho(lista)
-    }
 
     async function handleLogin(userLogin: UsuarioLogin) {
         setIsLoading(true)
@@ -79,7 +63,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
 
     return (
-        <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading, setIsLoading, isCarrinho, setIsCarrinho, carrinho, adicionarNoCarrinho, removerDoCarrinho }}>
+        <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading, setIsLoading, isCarrinho, setIsCarrinho }}>
             {children}
         </AuthContext.Provider>
     )

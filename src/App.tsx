@@ -19,6 +19,7 @@ import LivroDeletar from "./Components/Livros/LivroDeletar/LivroDeletar"
 import BookPage from "./Components/Book/BookPage/BookPage"
 import Pesquisa from "./pages/Pesquisa/Pesquisa"
 import Perfil from "./Components/Perfil/Perfil"
+import { ListaDeLivrosProvider } from "./Contexts/CarrinhoContext"
 
 function Banner() {
   const location = useLocation();
@@ -32,6 +33,7 @@ function Banner() {
 
 function App() {
   return (
+    <ListaDeLivrosProvider>
     <AuthProvider>
       <ToastContainer />
       <BrowserRouter>
@@ -73,6 +75,7 @@ function App() {
         <Footer />
       </BrowserRouter>
     </AuthProvider>
+    </ListaDeLivrosProvider>
   )
 }
 
