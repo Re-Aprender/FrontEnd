@@ -5,7 +5,7 @@ import { buscar, deletar } from "../../../services/Service"
 import Categoria from "../../../models/Categoria"
 import { toastAlerta } from "../../../util/toastAlerta"
 
-function CategoriaDeletar() {
+const CategoriaDeletar :React.FC = () => {
     const [categoria, setCategoria] = useState<Categoria>({} as Categoria)
 
     const navigate = useNavigate()
