@@ -50,7 +50,7 @@ function App() {
 
             <Route path="/home" element={<Home />} />
             <Route path="/sobre" element={<Sobre />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*"  element={<NotFound />} />
 
             <Route path="/livros/:id" element={<BookPage />} />
 
