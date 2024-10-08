@@ -21,7 +21,7 @@ function CarrinhoItem({ livro, quantidade }: CarrinhoItemProps) {
         if (livro.id) {
             await diminuirQuantidade(livro.id)
         }
-        if(livros.length < 1){
+        if(Array.from(livros.values()).length < 1){
             setIsCarrinho(false)
         }
     }

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { CreditCard,  ShoppingCartSimple } from '@phosphor-icons/react'
 import Livro from '../../../models/Livro';
 import { buscar } from '../../../services/Service';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FallingLines } from 'react-loader-spinner';
 import { AuthContext } from '../../../Contexts/AuthContext';
 import { ListaDeLivrosContext } from '../../../Contexts/CarrinhoContext';
@@ -71,7 +71,7 @@ function BookPage() {
                     </div>
 
                     <div className='grid grid-cols-2 gap-4'>
-                        <button className='bg-gradient-to-r from-accent-pink to-accent-orange p-2 rounded-md shadow-md text-stone-50 mt-8 flex items-center gap-2 justify-center'><CreditCard size={18} />Comprar</button>
+                        <Link to={`/finalizar/unico/${livro.id}`} className='bg-gradient-to-r from-accent-pink to-accent-orange p-2 rounded-md shadow-md text-stone-50 mt-8 flex items-center gap-2 justify-center text-center'><CreditCard size={18} />Comprar</Link>
                         <button onClick={handleCarrinho} className='bg-gradient-to-r from-accent-pink to-accent-orange p-2 rounded-md shadow-md text-stone-50 mt-8 flex items-center gap-2 justify-center'><ShoppingCartSimple size={18} />Carrinho</button>
                     </div>
 

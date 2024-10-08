@@ -53,6 +53,7 @@ function Header() {
             <ul className="flex gap-2 items-center flex-shrink-0 flex-wrap flex-grow justify-center md:justify-end">
               <Link to="/home"><li className="hover:underline">Home</li></Link>
               <Link to="/sobre"><li className="hover:underline">Sobre</li></Link>
+              <Link to="/doar"><li className="hover:underline">Doar</li></Link>
 
               {usuario.token !== "" ?
                 <button onClick={logout}>Sair</button>

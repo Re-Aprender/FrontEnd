@@ -3,10 +3,11 @@ import Livro from '../models/Livro';
 
 
 interface ListaDeLivrosContextType {
-    livros: { livro: Livro; quantidade: number }[];
+    livros: Map<number, { livro: Livro; quantidade: number }>;
     adicionarLivro: (livro: Livro) => void;
     diminuirQuantidade: (id: number) => void;
     getQuantidade: (id: number) => number;
+    limpar: () => void
 }
 
 const ListaDeLivrosContext = createContext<ListaDeLivrosContextType | undefined>(undefined);
@@ -52,8 +53,13 @@ const ListaDeLivrosProvider = ({ children }: { children: ReactNode }) => {
         return livros.get(id)?.quantidade || 0;
     };
 
+    const limpar = () => {
+        setLivros(new Map())
+    };
+
+
     return (
-        <ListaDeLivrosContext.Provider value={{ livros: Array.from(livros.values()), adicionarLivro, diminuirQuantidade, getQuantidade }}>
+        <ListaDeLivrosContext.Provider value={{ livros, adicionarLivro, diminuirQuantidade, getQuantidade, limpar }}>
             {children}
         </ListaDeLivrosContext.Provider>
     );

@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 import Livro from "../../models/Livro";
 import { buscar } from "../../services/Service";
 import { FallingLines } from "react-loader-spinner";
-import { useParams } from "react-router-dom";
+import { useNavigate, useNavigationType, useParams } from "react-router-dom";
 import Book from '../../Components/Book/BookCard/Book';
+import { toastAlerta } from '../../util/toastAlerta';
 
 
 function Pesquisa() {
@@ -17,14 +18,28 @@ function Pesquisa() {
 
     const [isLoading, setIsLoading] = useState(true)
 
-    let { pesquisa} = useParams();
+    let { pesquisa, categoria, nomecategoria} = useParams();
 
+    const navigate = useNavigate()
 
     async function buscarTemas() {
         setIsLoading(true)
-        await buscar(`/livros/nome/${pesquisa}`, setLivros, {
-            headers: {},
-        });
+        if(pesquisa){
+            await buscar(`/livros/nome/${pesquisa}`, setLivros, {
+                headers: {},
+            });}
+        else if(categoria){
+            try{
+                await buscar(`/livros/categoria/${categoria}`, setLivros, {
+                    headers: {},
+                });
+            }catch(e){
+                navigate("/home")
+                toastAlerta("Erro ao buscar a categoria", "erro")
+            }
+          
+        }
+       
         setIsLoading(false)
     }
 
@@ -36,7 +51,13 @@ function Pesquisa() {
     return (
         <>
             <div className="container">
-                <h1 className="text-4xl mt-8 mb-6 self-start ">Resultados de pesquisa para: <span className="text-accent-orange font-bold">{pesquisa};</span></h1>
+                <h1 className="text-4xl mt-8 mb-6 self-start">
+                    {!categoria ? (
+                        <>Resultados de pesquisa para: <span className="text-accent-orange font-bold">{pesquisa}</span></>
+                    ) : (
+                            <>Livros da categoria : <span className="text-accent-orange font-bold">{livros[0] ? livros[0].categoria.nome : categoria}</span></>
+                    )}
+                </h1>
             </div>
             {!isLoading ? <Swiper
                 slidesPerView={'auto'}

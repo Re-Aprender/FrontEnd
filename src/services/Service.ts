@@ -19,6 +19,11 @@ export const buscar = async(url: string, setDados: Function, header: Object) => 
   setDados(resposta.data)
 }
 
+export const buscarSemSet = async (url: string,  header: Object) => {
+  const resposta = await api.get(url, header)
+  return resposta.data
+}
+
 export const cadastrar = async(url: string, dados: Object, setDados: Function, header: Object) => {
   const resposta = await api.post(url, dados, header)
   setDados(resposta.data)

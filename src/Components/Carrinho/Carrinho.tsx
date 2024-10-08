@@ -3,6 +3,7 @@ import { AuthContext } from '../../Contexts/AuthContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import CarrinhoItem from './CarrinhoItem';
 import { ListaDeLivrosContext } from '../../Contexts/CarrinhoContext';
+import { Link } from 'react-router-dom';
 
 function Carrinho() {
     const { setIsCarrinho} = useContext(AuthContext);
@@ -38,21 +39,21 @@ function Carrinho() {
                 <h1 className="text-4xl mb-6 self-start">Seu <span className="text-accent-pink font-bold">carrinho;</span></h1>
                     <div className='flex  flex-col gap-4 mb-4'>
                    <AnimatePresence>
-                    {livros.map((livro) => (<CarrinhoItem key={livro.livro.id} livro={livro.livro} quantidade={livro.quantidade}></CarrinhoItem>))}
+                    {Array.from(livros.values()).map((livro) => (<CarrinhoItem key={livro.livro.id} livro={livro.livro} quantidade={livro.quantidade}></CarrinhoItem>))}
 
                    </AnimatePresence>
 
                     </div>
                 <div className='flex items-center gap-2 px-2 pb-4'>
                     <div className='h-[0.08rem] flex-grow bg-stone-300'></div>
-                    <p className='text-stone-600 font-light'>Total sem frete: <span className='font-medium text-xl text-accent-orange_dark'>R$ {livros.reduce((acc, item) => { return acc + (item.livro.preco) * item.quantidade }, 0).toFixed(2)}</span></p>
+                    <p className='text-stone-600 font-light'>Total sem frete: <span className='font-medium text-xl text-accent-orange_dark'>R$ {Array.from(livros.values()).reduce((acc, item) => { return acc + (item.livro.preco) * item.quantidade }, 0).toFixed(2)}</span></p>
                 </div>
-                <button
-                    className="rounded-md text-stone-50 bg-gradient-to-r from-accent-pink to-accent-orange py-2 block shadow-md"
-                    type="submit"
+                <Link to="/finalizar"
+                    className="rounded-md text-stone-50 text-center bg-gradient-to-r from-accent-pink to-accent-orange py-2 block shadow-md"
+                    onClick={handleCarrinho}
                 >
                     Finalizar compra
-                </button>
+                </Link>
             </motion.div>
         </>
     );

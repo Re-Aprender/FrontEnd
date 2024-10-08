@@ -20,6 +20,8 @@ import BookPage from "./Components/Book/BookPage/BookPage"
 import Pesquisa from "./pages/Pesquisa/Pesquisa"
 import Perfil from "./Components/Perfil/Perfil"
 import { ListaDeLivrosProvider } from "./Contexts/CarrinhoContext"
+import Doar from "./pages/Doar/Doar"
+import FinalizacaoCompra from "./pages/FinalizacaoCompra/FinalizaoCompra"
 
 function Banner() {
   const location = useLocation();
@@ -50,11 +52,18 @@ function App() {
 
             <Route path="/home" element={<Home />} />
             <Route path="/sobre" element={<Sobre />} />
+            <Route path="/doar" element={<Doar />} />
+              <Route path="/finalizar" element={<FinalizacaoCompra />} />
+              <Route path="/finalizar/unico/:id" element={<FinalizacaoCompra />} />
+
+
             <Route path="*"  element={<NotFound />} />
 
             <Route path="/livros/:id" element={<BookPage />} />
 
             <Route path="/pesquisar/:pesquisa" element={<Pesquisa />} />
+              <Route path="/categoria/:categoria" element={<Pesquisa />} />
+
 
             {/* Sessão de administrador */}
             <Route path="/admin/categorias" element={<CategoriaLista />} />
